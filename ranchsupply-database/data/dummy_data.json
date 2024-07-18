@@ -1,0 +1,314 @@
+"products": [
+        {
+            "product_name": "Tractor",
+            "description": "A powerful farming tractor.",
+            "price": 12000.00,
+            "discounted_price": 10800.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 5,
+            "size": null,
+            "image_url": "https://www.deere.com/assets/images/region-4/products/tractors/row-crop-tractors/6r-row-crop-tractors/6r-165/6r_165_studio_image_r4x001130_R2_1024x576_1_large_72a915acec82f011ccd37ce9f507c7bb2008f559.jpg"
+        },
+        {
+            "product_name": "Plow",
+            "description": "Heavy-duty plow for soil preparation.",
+            "price": 3000.00,
+            "discounted_price": 2700.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 10,
+            "size": null,
+            "image_url": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSBrP0GP7eU1BAAcoVHHyEbEWYrDje8BZ1UG6T31HbBoffGvj5PUl7Aesk4w0-iryUWkhfVBhTyt3OgPZNHO04MmsJ_SqTTpUcG8vA8Mei1ZhdB61em0suvkoc0pVJkVK0JNS9qyQ&usqp=CAc"
+        },
+        {
+            "product_name": "Harvester",
+            "description": "Efficient crop harvester.",
+            "price": 15000.00,
+            "discounted_price": 13500.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 3,
+            "size": null,
+            "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3nZr2UAFggsjXrGodbMWrAh6AZSzMJSDy8A&s"
+        },
+        {
+            "product_name": "Seed Drill",
+            "description": "Precision seed drill for planting.",
+            "price": 2000.00,
+            "discounted_price": 1800.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 15,
+            "size": null,
+            "image_url": "https://5.imimg.com/data5/CM/PH/AD/SELLER-37917144/seed-drill-machine-500x500.jpg"
+        },
+        {
+            "product_name": "Cultivator",
+            "description": "Versatile soil cultivator.",
+            "price": 2500.00,
+            "discounted_price": 2250.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 8,
+            "size": null,
+            "image_url": "https://cdnmedia.endeavorsuite.com/images/catalogs/22739/products/detail/f70a79b2-4afd-41a6-935b-d080a9311efb.jpg"
+        },
+        {
+            "product_name": "Sprayer",
+            "description": "High-capacity sprayer for pesticides.",
+            "price": 1800.00,
+            "discounted_price": 1620.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 12,
+            "size": null,
+            "image_url": "https://images.thdstatic.com/productImages/06a1dd47-ab18-4dd8-bbf2-777769432638/svn/john-deere-battery-sprayers-lp19479-64_600.jpg"
+        },
+        {
+            "product_name": "Baler",
+            "description": "Reliable hay baler.",
+            "price": 5000.00,
+            "discounted_price": 4500.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 6,
+            "size": null,
+            "image_url": "https://www.deere.com/assets/images/region-4/products/hay-and-forage/hay-and-forage-baling-equipment/v461r-round-baler/v461r_round_baler_studio_r2c008280_1366x768_large_a051272bb4817f9c91bcbc789b67d720bdef9f3f.jpg"
+        },
+        {
+            "product_name": "Manure Spreader",
+            "description": "Efficient manure spreader.",
+            "price": 4000.00,
+            "discounted_price": 3600.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 7,
+            "size": null,
+            "image_url": "https://millcreekspreaders.com/wp-content/uploads/2019/10/127DX-RRQ-1024x685.jpg"
+        },
+        {
+            "product_name": "Irrigation System",
+            "description": "Advanced irrigation system.",
+            "price": 7500.00,
+            "discounted_price": 6750.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 4,
+            "size": null,
+            "image_url": "https://www.gvsprinklers.com.au/wp-content/uploads/2017/10/sprinklerirrigation.jpg"
+        },
+        {
+            "product_name": "Livestock Trailer",
+            "description": "Sturdy trailer for livestock transport.",
+            "price": 6000.00,
+            "discounted_price": 5400.00,
+            "discount_percent": 10,
+            "category_id": 1,
+            "stock": 5,
+            "size": null,
+            "image_url": "https://media.tractorsupply.com/is/image/TractorSupplyCompany/1092416?wid=456&hei=456&fmt=jpeg&qlt=100,0&resMode=sharp2&op_usm=0.9,1.0,8,0"
+        },
+        {
+            "product_name": "Farmer Jacket",
+            "description": "Durable and comfortable jacket for farmers.",
+            "price": 75.00,
+            "category_id": 2,
+            "sizes": [
+                { "size": "S", "stock": 5, "discounted_price": 67.50, "discount_percent": 10 },
+                { "size": "M", "stock": 5, "discounted_price": 67.50, "discount_percent": 10 },
+                { "size": "L", "stock": 5, "discounted_price": 67.50, "discount_percent": 10 },
+                { "size": "XL", "stock": 5, "discounted_price": 67.50, "discount_percent": 10 }
+            ],
+            "image_url": "https://www.augustacoop.com/wp-content/uploads/J14120Moss.jpg"
+        },
+        {
+            "product_name": "Work Boots",
+            "description": "Waterproof and durable work boots.",
+            "price": 120.00,
+            "category_id": 2,
+            "sizes": [
+                { "size": "8", "stock": 6, "discounted_price": 108.00, "discount_percent": 10 },
+                { "size": "9", "stock": 6, "discounted_price": 108.00, "discount_percent": 10 },
+                { "size": "10", "stock": 6, "discounted_price": 108.00, "discount_percent": 10 },
+                { "size": "11", "stock": 6, "discounted_price": 108.00, "discount_percent": 10 },
+                { "size": "12", "stock": 6, "discounted_price": 108.00, "discount_percent": 10 }
+            ],
+            "image_url": "https://www.famousfootwear.com/blob/product-images/20000/72/86/2/72862_left_feed1000.jpg"
+        },
+        {
+            "product_name": "Overalls",
+            "description": "Durable work overalls.",
+            "price": 45.00,
+            "category_id": 2,
+            "sizes": [
+                { "size": "S", "stock": 7, "discounted_price": 40.50, "discount_percent": 10 },
+                { "size": "M", "stock": 7, "discounted_price": 40.50, "discount_percent": 10 },
+                { "size": "L", "stock": 7, "discounted_price": 40.50, "discount_percent": 10 },
+                { "size": "XL", "stock": 7, "discounted_price": 40.50, "discount_percent": 10 }
+            ],
+            "image_url": "https://cdn.shopify.com/s/files/1/0404/7573/4339/products/barnato-mens-premium-bib-overall-front-1600.jpg?v=1664785517"
+        },
+        {
+            "product_name": "Wide Brim Hat",
+            "description": "Protective hat for outdoor work.",
+            "price": 30.00,
+            "category_id": 2,
+            "sizes": [
+                { "size": "M", "stock": 10, "discounted_price": 27.00, "discount_percent": 10 },
+                { "size": "L", "stock": 10, "discounted_price": 27.00, "discount_percent": 10 }
+            ],
+            "image_url": "https://images.quickhunts.com/image/upload/q_auto/v1/product/main/3ff61fcb0edbda351a626adf3707eae6.jpg"
+        },
+        {
+            "product_name": "Hunting Boots",
+            "description": "Insulated boots for hunting.",
+            "price": 150.00,
+            "category_id": 3,
+            "sizes": [
+                { "size": "8", "stock": 8, "discounted_price": 135.00, "discount_percent": 10 },
+                { "size": "9", "stock": 8, "discounted_price": 135.00, "discount_percent": 10 },
+                { "size": "10", "stock": 8, "discounted_price": 135.00, "discount_percent": 10 },
+                { "size": "11", "stock": 8, "discounted_price": 135.00, "discount_percent": 10 },
+                { "size": "12", "stock": 8, "discounted_price": 135.00, "discount_percent": 10 }
+            ],
+            "image_url": "https://cdn.media.amplience.net/i/primemedia/BO_33-0403_1?fmt=auto&$webp_480$&w=480&sm=c"
+        },
+        {
+            "product_name": "Camouflage Pants",
+            "description": "Comfortable camouflage pants.",
+            "price": 60.00,
+            "category_id": 3,
+            "sizes": [
+                { "size": "S", "stock": 15, "discounted_price": 54.00, "discount_percent": 10 },
+                { "size": "M", "stock": 15, "discounted_price": 54.00, "discount_percent": 10 },
+                { "size": "L", "stock": 15, "discounted_price": 54.00, "discount_percent": 10 },
+                { "size": "XL", "stock": 15, "discounted_price": 54.00, "discount_percent": 10 }
+            ],
+            "image_url": "https://m.media-amazon.com/images/I/61e-U-GzSDL._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Hunting Rifle",
+            "description": "High-precision hunting rifle.",
+            "price": 700.00,
+            "discounted_price": 630.00,
+            "discount_percent": 10,
+            "category_id": 3,
+            "stock": 10,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/31SPp20H0FL._AC_UF894,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Crossbow",
+            "description": "Powerful and accurate crossbow.",
+            "price": 450.00,
+            "discounted_price": 405.00,
+            "discount_percent": 10,
+            "category_id": 3,
+            "stock": 15,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/31wTn8SlEcL._AC_UF894,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Compound Bow",
+            "description": "Advanced compound bow for hunting.",
+            "price": 500.00,
+            "discounted_price": 450.00,
+            "discount_percent": 10,
+            "category_id": 3,
+            "stock": 12,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/41M3DLsZwvL._AC_UF894,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Hunting Knife",
+            "description": "Rugged hunting knife.",
+            "price": 80.00,
+            "discounted_price": 72.00,
+            "discount_percent": 10,
+            "category_id": 3,
+            "stock": 25,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/51yVGkhhtlL._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Camouflage Jacket",
+            "description": "Warm and protective camouflage jacket.",
+            "price": 120.00,
+            "category_id": 3,
+            "sizes": [
+                { "size": "S", "stock": 5, "discounted_price": 108.00, "discount_percent": 10 },
+                { "size": "M", "stock": 5, "discounted_price": 108.00, "discount_percent": 10 },
+                { "size": "L", "stock": 5, "discounted_price": 108.00, "discount_percent": 10 },
+                { "size": "XL", "stock": 5, "discounted_price": 108.00, "discount_percent": 10 }
+            ],
+            "image_url": "https://m.media-amazon.com/images/I/91-CAL0bhbL._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Fishing Rod",
+            "description": "High-quality fishing rod.",
+            "price": 150.00,
+            "discounted_price": 135.00,
+            "discount_percent": 10,
+            "category_id": 4,
+            "stock": 30,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/41OpQeFAuGL._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Tackle Box",
+            "description": "Spacious and organized tackle box.",
+            "price": 60.00,
+            "discounted_price": 54.00,
+            "discount_percent": 10,
+            "category_id": 4,
+            "stock": 25,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/71b4sHpAj7L._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Camping Tent",
+            "description": "Durable and weather-resistant camping tent.",
+            "price": 200.00,
+            "discounted_price": 180.00,
+            "discount_percent": 10,
+            "category_id": 4,
+            "stock": 10,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/81dt7Sc2yOL._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Sleeping Bag",
+            "description": "Warm and comfortable sleeping bag.",
+            "price": 80.00,
+            "discounted_price": 72.00,
+            "discount_percent": 10,
+            "category_id": 4,
+            "stock": 20,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/71iAGLBvI6L._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Camping Stove",
+            "description": "Portable and efficient camping stove.",
+            "price": 90.00,
+            "discounted_price": 81.00,
+            "discount_percent": 10,
+            "category_id": 4,
+            "stock": 15,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/71a+IfFbDAL._AC_UF1000,1000_QL80_.jpg"
+        },
+        {
+            "product_name": "Hiking Backpack",
+            "description": "Spacious and durable hiking backpack.",
+            "price": 110.00,
+            "discounted_price": 99.00,
+            "discount_percent": 10,
+            "category_id": 4,
+            "stock": 18,
+            "size": null,
+            "image_url": "https://m.media-amazon.com/images/I/71oFrjHHTEL._AC_UF1000,1000_QL80_.jpg"
+        }
+    ]
+}
