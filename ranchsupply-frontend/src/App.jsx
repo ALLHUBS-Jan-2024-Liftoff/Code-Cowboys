@@ -1,12 +1,13 @@
 import { useState } from "react";
 import "./App.css";
+import Navbar from "./components/home/Navbar";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1 className="text-center">Ranch Supply E-commerce site</h1>
+      <Navbar />
     </>
   );
 }
