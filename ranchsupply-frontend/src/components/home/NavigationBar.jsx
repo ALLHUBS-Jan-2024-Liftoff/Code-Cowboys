@@ -39,10 +39,10 @@ const NavigationBar = () => {
               />
               <div className="d-flex flex-column justify-content-center">
                 <h4 className="m-0" style={{ fontSize: "1rem" }}>
-                  RanchSupply
+                  Ranch Supply
                 </h4>
                 <small style={{ fontSize: "0.8rem" }}>
-                  Rapid Reflection, Swift Selection
+                  All your farming needs
                 </small>
               </div>
             </div>
