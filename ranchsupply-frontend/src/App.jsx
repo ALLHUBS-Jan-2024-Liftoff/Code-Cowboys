@@ -1,13 +1,17 @@
 import { useState } from "react";
 import "./App.css";
-import Navbar from "./components/home/Navbar";
+
+import NavigationBar from "./components/home/NavigationBar";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <Navbar />
+      <BrowserRouter>
+        <NavigationBar />
+      </BrowserRouter>
     </>
   );
 }
