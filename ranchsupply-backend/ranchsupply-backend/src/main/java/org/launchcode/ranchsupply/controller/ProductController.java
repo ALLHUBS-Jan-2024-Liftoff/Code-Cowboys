@@ -37,4 +37,10 @@ public class ProductController {
         ProductDto savedProduct = productservice.addProduct(productDto);
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
+    //Search products by serach term
+    @GetMapping("/searchproducts")
+    public ResponseEntity<List<ProductDto>> searchProductsByTerm(@RequestParam String searchTerm){
+        List<ProductDto> matchingProducts = productservice.findProductsBySearchTerm(searchTerm);
+        return ResponseEntity.ok(matchingProducts);
+    }
 }

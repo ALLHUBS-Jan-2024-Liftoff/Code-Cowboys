@@ -41,6 +41,13 @@ public class ProductService {
         Product savedProduct = productRepository.save(product);
         return modelMapper.map(savedProduct, ProductDto.class);
     }
+
+    //Search products by Product Name
+    public List<ProductDto> findProductsBySearchTerm(String searchTerm){
+        List<Product> products = productRepository.findByTitleContaining(searchTerm);
+        return products.stream().map((product) -> modelMapper.map(product,ProductDto.class))
+                .collect(Collectors.toList());
+    }
     //Update in existing product
 
     //Delete a product with specified ID
