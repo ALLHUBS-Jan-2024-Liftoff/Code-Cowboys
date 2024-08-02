@@ -67,6 +67,9 @@ const NavigationBar = () => {
               <Nav.Link as={NavLink} to="/contact">
                 Contact Us
               </Nav.Link>
+              <Nav.Link as={NavLink} to="/admin">
+                Admin
+              </Nav.Link>
             </Nav>
             <Nav>
               {false ? (
