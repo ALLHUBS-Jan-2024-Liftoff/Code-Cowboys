@@ -7,12 +7,13 @@ import org.launchcode.ranchsupply.controller.AuthenticationController;
 import org.launchcode.ranchsupply.model.User;
 import org.launchcode.ranchsupply.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.servlet.HandlerInterceptor;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 
-public class AuthenticationFilter implements AuthenticationFilter1 {
+public class AuthenticationFilter implements HandlerInterceptor {
     @Autowired
     UserRepository userRepository;
 
@@ -59,5 +60,7 @@ public class AuthenticationFilter implements AuthenticationFilter1 {
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
             return false;
         }
+
+
     }
 }
