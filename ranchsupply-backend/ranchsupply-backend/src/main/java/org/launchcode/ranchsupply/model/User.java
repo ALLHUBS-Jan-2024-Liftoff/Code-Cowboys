@@ -6,10 +6,8 @@ import java.util.*;
 
 @Entity
 @Table(name = "users")
-@IdClass(UserId.class)
 public class User extends AbstractEntity{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long userId;
 
     private String userName;
