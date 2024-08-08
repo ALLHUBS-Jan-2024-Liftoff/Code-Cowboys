@@ -2,6 +2,7 @@ package org.launchcode.ranchsupply.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.launchcode.ranchsupply.model.Role;
 import org.launchcode.ranchsupply.model.User;
 import org.launchcode.ranchsupply.model.dto.LoginFormDTO;
 import org.launchcode.ranchsupply.model.dto.RegisterFormDTO;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -50,13 +52,29 @@ public class AuthenticationController {
         ResponseEntity response = null;
         Map<String, String> responseBody = new HashMap<>();
         try{
-            User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
+            User existingUser = userRepository.findByUserName(registerFormDTO.getUsername());
             if (existingUser == null && !registerFormDTO.getUsername().isEmpty() && !registerFormDTO.getPassword().isEmpty()){
                 responseBody.put("message", "Given user details are successfully registered");
                 response = ResponseEntity
                         .status(HttpStatus.CREATED)
                         .body(responseBody);
-                User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(), registerFormDTO.getFirstName(), registerFormDTO.getLastName(), registerFormDTO.getEmail(), registerFormDTO.getPhoneNumber(), registerFormDTO.getAddress());
+                Role userRole = new Role("ROLE_USER");
+                User newUser = new User(
+                        null, // userId will be generated automatically
+                        registerFormDTO.getUsername(),
+                        registerFormDTO.getEmail(),
+                        registerFormDTO.getPassword(),
+                        registerFormDTO.getPhoneNumber(),
+                        registerFormDTO.getAddress(),
+                        null, // city will be extracted from the address
+                        null, // state will be extracted from the address
+                        null, // zipcode will be extracted from the address
+                        registerFormDTO.getFirstName(),
+                        registerFormDTO.getLastName(),
+                        new Date(), // createdAt will be the current date
+                        null, // lastLogin will be set later
+                        userRole // assuming the default role for a new user is USER
+                );
                 setUserInSession(request.getSession(), newUser);
                 userRepository.save(newUser);
             } else if(existingUser != null) {
@@ -89,7 +107,7 @@ public class AuthenticationController {
 
         ResponseEntity response = null;
         Map<String, String> responseBody = new HashMap<>();
-        User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
+        User theUser = userRepository.findByUserName(loginFormDTO.getUsername());
         String password = loginFormDTO.getPassword();
         if (theUser == null) {
             responseBody.put("message", "Username does not exist");

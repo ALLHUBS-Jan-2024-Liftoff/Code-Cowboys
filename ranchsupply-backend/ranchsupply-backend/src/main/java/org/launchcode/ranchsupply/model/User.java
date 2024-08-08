@@ -6,7 +6,8 @@ import java.util.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+@IdClass(UserId.class)
+public class User extends AbstractEntity{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
@@ -43,28 +44,29 @@ public class User {
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User() {
-        this.createdAt = new Date();
-        this.lastLogin = new Date();
     }
 
-    public User(String userName, Long userId, String password, String city
-            , String state,  String email, String phoneNumber, String address, Role role) {
-        this.userName = userName;
+    public User(Long userId, String userName, String email, String pwHash, String phoneNumber, String address, String city, String state, String zipcode, String firstName, String lastName, Date createdAt, Date lastLogin, Role role) {
         this.userId = userId;
-        this.pwHash = encoder.encode(password);
-        this.city = city;
-        this.state = state;
+        this.userName = userName;
         this.email = email;
+        this.pwHash = pwHash;
         this.phoneNumber = phoneNumber;
         this.address = address;
-        this.role = role;
+        this.city = city;
+        this.state = state;
+        this.zipcode = zipcode;
         this.firstName = firstName;
         this.lastName = lastName;
-
+        this.createdAt = createdAt;
+        this.lastLogin = lastLogin;
+        this.role = role;
     }
 
-    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address) {
-    }
+//    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address) {
+//   }
+
+
 
     public String getUsername() {
         return userName;
@@ -165,5 +167,11 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public void setUsername(String username) {
+    }
+
+    public void setPassword(String encode) {
     }
 }

@@ -2,7 +2,6 @@ package org.launchcode.ranchsupply.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "roles")
 public class Role {
 
     @Id
