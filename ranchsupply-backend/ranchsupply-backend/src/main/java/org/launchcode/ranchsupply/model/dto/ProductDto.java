@@ -4,7 +4,6 @@ import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
-
 import java.util.Date;
 
 public class ProductDto {
@@ -18,15 +17,15 @@ public class ProductDto {
     @Size(max = 255, message = "Product Name must be less than 255 characters")
     private String title;
 
-    @NotBlank(message = "Please provide a descripiton")
+    @NotBlank(message = "Please provide a description")
     private String description;
 
     @Min(value = 0, message = "Price must be greater than 0")
-    @Digits(integer = 10, fraction = 2, message = "Unit Price should be only upto 2 decimal places")
+    @Digits(integer = 10, fraction = 2, message = "Unit Price should be only up to 2 decimal places")
     private double price;
 
     @Min(value = 0, message = "Discounted Price must be greater than or equal to 0")
-    @Digits(integer = 10, fraction = 2, message = "Discounted Price should be only upto 2 decimal places")
+    @Digits(integer = 10, fraction = 2, message = "Discounted Price should be only up to 2 decimal places")
     private double discountedPrice;
 
     @Min(value = 0, message = "Quantity must be greater than or equal to 0")
