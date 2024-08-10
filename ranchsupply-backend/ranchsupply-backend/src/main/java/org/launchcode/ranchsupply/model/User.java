@@ -35,16 +35,16 @@ public class User extends AbstractEntity{
 
     private Date lastLogin;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
-    private Role role;
+    private String role;
+
+
 
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public User() {
     }
 
-    public User(Long userId, String userName, String email, String pwHash, String phoneNumber, String address, String city, String state, String zipcode, String firstName, String lastName, Date createdAt, Date lastLogin, Role role) {
+    public User(Long userId, String userName, String email, String pwHash, String phoneNumber, String address, String city, String state, String zipcode, String firstName, String lastName, Date createdAt, Date lastLogin, String role) {
         this.userId = userId;
         this.userName = userName;
         this.email = email;
@@ -58,7 +58,11 @@ public class User extends AbstractEntity{
         this.lastName = lastName;
         this.createdAt = createdAt;
         this.lastLogin = lastLogin;
-        this.role = role;
+        this.role = "user";
+    }
+
+    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address, String role) {
+        super();
     }
 
 //    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address) {
@@ -130,14 +134,7 @@ public class User extends AbstractEntity{
     public Long getUserId() {
         return userId;
     }
-
-    public Role getRole() {
-        return role;
-    }
-
-    public void setRole(Role role) {
-        this.role = role;
-    }
+    
 
     public Date getCreatedAt() {
         return createdAt;

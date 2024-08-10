@@ -21,15 +21,6 @@ public class RegisterFormDTO extends LoginFormDTO{
     @Size(max = 100, message = "Address must be less than 100 characters")
     private String address;
 
-    @Size(max = 50, message = "City must be less than 50 characters")
-    private String city;
-
-    @Size(max = 50, message = "State must be less than 50 characters")
-    private String state;
-
-    @Size(max = 10, message = "Zipcode must be less than 10 characters")
-    private String zipcode;
-
     public String getFirstName() {
         return firstName;
     }
@@ -68,30 +59,6 @@ public class RegisterFormDTO extends LoginFormDTO{
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
     }
 
 }

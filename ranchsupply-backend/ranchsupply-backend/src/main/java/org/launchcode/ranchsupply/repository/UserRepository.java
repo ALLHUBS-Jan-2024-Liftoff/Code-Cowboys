@@ -1,5 +1,4 @@
 package org.launchcode.ranchsupply.repository;
-import org.launchcode.ranchsupply.model.Role;
 import org.launchcode.ranchsupply.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -13,6 +12,5 @@ public interface UserRepository extends JpaRepository <User, Long> {
 
     User findByUserId(Long userId);
 
-    User findByRole(Role role);
 
 }
