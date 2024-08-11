@@ -1,0 +1,26 @@
+.navbar-middle {
+  background-color: var(--lighter);
+  transition: 0.5s ease;
+}
+
+.navbar-middle .menu-links a {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  letter-spacing: 0.3;
+  text-transform: uppercase;
+  transition: 0.5s ease;
+}
+.bg-myColor {
+  /* background-image: linear-gradient(to right, #823604, #f96400); */
+  /* background-image: linear-gradient(to right, #47895f, #a0dab5); */
+  background-image: linear-gradient(to right, #c0c2c1, #d6d9d7);
+}
+.bg-footerColor {
+  /* background-image: linear-gradient(to right, #519851, #859485); */
+  background-image: linear-gradient(to right, #a4a6a5, #cbd6cf);
+}
+
+.websiteLogo {
+  mix-blend-mode: multiply;
+}

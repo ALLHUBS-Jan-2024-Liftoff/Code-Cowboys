@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Container, Nav, Row } from "react-bootstrap";
-import "./Navbar.css";
+import "../navigation/NavigationBar.css";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,8 +8,8 @@ const Footer = () => {
   return (
     <>
       <footer className="footer">
-        <Container fluid className="bg-myColor">
-          <Row className="text-white p-3 align-items-center">
+        <Container fluid className="bg-footerColor">
+          <Row className=" p-3 align-items-center">
             <Col xs={12} md={3} className="pb-3">
               <div
                 className="d-flex"
@@ -29,9 +29,7 @@ const Footer = () => {
                   <h4 className="m-0" style={{ fontSize: "1.2rem" }}>
                     RanchSupply
                   </h4>
-                  <small style={{ fontSize: "0.9rem" }}>
-                    Rapid Reflection, Swift Selection
-                  </small>
+                  <small style={{ fontSize: "0.9rem" }}></small>
                 </div>
               </div>
             </Col>
@@ -54,7 +52,7 @@ const Footer = () => {
                 Don't miss out on exclusive deals and updates! Sign up for our
                 newsletter today.
               </h6>
-              <button className="btn btn-outline-light w-100 mb-3 mt-3">
+              <button className="btn btn-outline-dark w-100 mb-3 mt-3 text-black">
                 Signup
               </button>
               <div className="d-flex gap-2 justify-content-center">
@@ -102,7 +100,7 @@ const Footer = () => {
               </div>
             </Col>
           </Row>
-          <Row className="text-white text-center">
+          <Row className="text-center">
             <Col className="pb-2">
               <small>
                 Copyright &copy; RanchSupply, {currentYear} | All Rights

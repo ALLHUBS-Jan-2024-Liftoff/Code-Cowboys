@@ -28,29 +28,17 @@ const ProductCard = ({ product }) => {
 
   return (
     <Col className="mb-3" md={6} lg={4} xl={3}>
-      <Card>
-        {/* <img
-          // src={`data:image/jpeg;base64,${product.imageUrl}`}
-          src={product.imageUrl}
-          // className="card-img-top"
-          alt={product.title}
-          // width="100%"
-          // height="150rem"
-          onClick={() => navigate(`/product/${1}`)}
-          // style={{
-          //   objectFit: "contain",
-          //   cursor: "pointer",
-          // }}
-        /> */}
+      <Card className="productcard">
         <img
-          // urlEndpoint="https://ik.imagekit.io/ranchsupply/"
           src={product.productImage}
+          alt={product.title}
+          width="100%"
+          height="180px"
+          // className="card-img-top"
           onClick={() => navigate(`/product/${product.productId}`)}
-          className="object-fit-lg-cover"
           style={{
-            objectFit: "cover",
+            objectFit: "contain",
             cursor: "pointer",
-            height: "150px",
           }}
         />
 

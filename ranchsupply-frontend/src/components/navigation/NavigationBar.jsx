@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import "./Navbar.css";
+import "./NavigationBar.css";
 
 const NavigationBar = () => {
   const [expanded, setExpanded] = useState(false);
@@ -17,33 +17,28 @@ const NavigationBar = () => {
     <>
       <Navbar
         collapseOnSelect
-        // bg="black"
-        data-bs-theme="dark"
         expand="lg"
         className="bg-navbar bg-myColor"
-        variant="dark"
+        // variant="dark"
         sticky="top"
         expanded={expanded}
-        // style={{ backgroundColor: "black" }}
       >
         <Container>
-          <Navbar.Brand className="p-0">
+          <Navbar.Brand className="p-0" as={NavLink} to="/">
             <div className="d-flex">
               <img
                 src="https://m.media-amazon.com/images/I/814gr-bR9-L._AC_SX679_.jpg"
                 width={50}
                 fluid="true"
-                className="d-inline-block align-top websiteLogo"
+                className="d-inline-block align-top"
                 alt="RanchSupply Logo"
-                //  style={{ mix-blend-mode: "lightblue" }}
+                // style={{ mixBlendMode: "normal" }}
               />
               <div className="d-flex flex-column justify-content-center">
                 <h4 className="m-0" style={{ fontSize: "1rem" }}>
                   RanchSupply
                 </h4>
-                <small style={{ fontSize: "0.8rem" }}>
-                  Rapid Reflection, Swift Selection
-                </small>
+                <small style={{ fontSize: "0.8rem" }}></small>
               </div>
             </div>
           </Navbar.Brand>
@@ -60,7 +55,7 @@ const NavigationBar = () => {
               <Nav.Link as={NavLink} to="/products">
                 Products
               </Nav.Link>
-              <Nav.Link>Categories</Nav.Link>
+              {/* <Nav.Link>Categories</Nav.Link> */}
               <Nav.Link as={NavLink} to="/about" onClick={toggleCollapse}>
                 About Us
               </Nav.Link>
@@ -69,12 +64,21 @@ const NavigationBar = () => {
               </Nav.Link>
             </Nav>
             <Nav>
-              {false ? (
+              {true ? (
                 <>
-                  <Nav.Link>
+                  <Nav.Link as={NavLink} to="/cart" onClick={toggleCollapse}>
                     <i className="fa-solid fa-cart-shopping"></i>
+                    {/* {cart && cart?.items.length === 0 ? (
+                      ""
+                    ) : (
+                      <Badge className="cart-badge" bg="danger">
+                        {cart && cart?.items.length}
+                      </Badge>
+                    )} */}
                   </Nav.Link>
-                  <Nav.Link>Orders</Nav.Link>
+                  <Nav.Link as={NavLink} to="/orders" onClick={toggleCollapse}>
+                    Orders
+                  </Nav.Link>
                   <Nav.Link
                     onClick={() => {
                       toggleCollapse();
