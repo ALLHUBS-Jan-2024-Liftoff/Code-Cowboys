@@ -7,6 +7,8 @@ import * as categoryService from '../../services/CategoryService';
 const Admin = () => {
   const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [users, setUsers] = useState([]);  // Placeholder state for users
+  const [orders, setOrders] = useState([]);  // Placeholder state for orders
   const [activeTab, setActiveTab] = useState('products');
   const [showModal, setShowModal] = useState(false);
   const [newItem, setNewItem] = useState({
@@ -18,7 +20,7 @@ const Admin = () => {
     quantity: '',
     productImage: '',
     size: '',
-    categoryId: '',  // Ensure this matches the backend expectation
+    categoryId: '',  
     categoryTitle: '',
     categoryDescription: ''
   });
@@ -26,8 +28,12 @@ const Admin = () => {
   useEffect(() => {
     if (activeTab === 'products') {
       loadProducts();
-    } else {
+    } else if (activeTab === 'categories') {
       loadCategories();
+    } else if (activeTab === 'users') {
+      // Load users data once the backend is ready
+    } else if (activeTab === 'orders') {
+      // Load orders data once the backend is ready
     }
   }, [activeTab]);
 
@@ -52,8 +58,12 @@ const Admin = () => {
   const refreshData = () => {
     if (activeTab === 'products') {
       loadProducts();
-    } else {
+    } else if (activeTab === 'categories') {
       loadCategories();
+    } else if (activeTab === 'users') {
+      // Refresh users data once the backend is ready
+    } else if (activeTab === 'orders') {
+      // Refresh orders data once the backend is ready
     }
   };
 
@@ -81,7 +91,7 @@ const Admin = () => {
           updatedAt: new Date()
         };
         await productService.addProduct(newProduct);
-      } else {
+      } else if (activeTab === 'categories') {
         const newCategory = {
           categoryTitle: newItem.title,
           description: newItem.description,
@@ -125,11 +135,17 @@ const Admin = () => {
           </Button>
           <AdminTable rows={categories} refreshData={refreshData} type="categories" />
         </Tab>
+        <Tab eventKey="users" title="Users">
+          <div>No user data available yet.</div>
+        </Tab>
+        <Tab eventKey="orders" title="Orders">
+          <div>No order data available yet.</div>
+        </Tab>
       </Tabs>
 
       <Modal show={showModal} onHide={handleCloseModal}>
         <Modal.Header closeButton>
-          <Modal.Title>{activeTab === 'products' ? 'Add Product' : 'Add Category'}</Modal.Title>
+          <Modal.Title>{activeTab === 'products' ? 'Add Product' : activeTab === 'categories' ? 'Add Category' : 'Add Item'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -256,7 +272,7 @@ const Admin = () => {
                   />
                 </Form.Group>
               </>
-            ) : (
+            ) : activeTab === 'categories' ? (
               <>
                 <Form.Group controlId="formTitle">
                   <Form.Label>Category Title</Form.Label>
@@ -280,7 +296,7 @@ const Admin = () => {
                   />
                 </Form.Group>
               </>
-            )}
+            ) : null}
           </Form>
         </Modal.Body>
         <Modal.Footer>
