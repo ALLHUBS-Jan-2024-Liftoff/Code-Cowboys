@@ -56,12 +56,12 @@ public class AuthenticationController {
                                                                        HttpServletRequest request) {
         Map<String, String> responseBody = new HashMap<>();
         try {
-            User existingUser = userRepository.findByUserName(registerFormDTO.getUsername());
+            User existingUser = userRepository.findByUsername(registerFormDTO.getUsername());
             if (existingUser == null && !registerFormDTO.getUsername().isEmpty() && !registerFormDTO.getPassword().isEmpty()) {
                 User newUser = new User(registerFormDTO.getUsername(), registerFormDTO.getPassword(),
                         registerFormDTO.getFirstName(), registerFormDTO.getLastName(),
                         registerFormDTO.getEmail(), registerFormDTO.getPhoneNumber(),
-                        registerFormDTO.getAddress(), "user"); // Set default role to "user"
+                        registerFormDTO.getAddress(), registerFormDTO.getCity(), registerFormDTO.getState(), registerFormDTO.getZipcode(), "user"); // Set default role to "user"
                 setUserInSession(request.getSession(), newUser);
                 userRepository.save(newUser);
 
@@ -88,7 +88,7 @@ public class AuthenticationController {
     public ResponseEntity<Map<String, String>> processLoginForm(@RequestBody @Valid LoginFormDTO loginFormDTO,
                                                                 HttpServletRequest request) {
         Map<String, String> responseBody = new HashMap<>();
-        User theUser = userRepository.findByUserName(loginFormDTO.getUsername());
+        User theUser = userRepository.findByUsername(loginFormDTO.getUsername());
         String password = loginFormDTO.getPassword();
 
         if (theUser == null) {
@@ -124,5 +124,14 @@ public class AuthenticationController {
     @PostMapping("/delete")
     public void deleteUser(@RequestParam Integer userId){
         userRepository.deleteById(Long.valueOf(userId));
+    }
+    @GetMapping("/debug-session")
+    public ResponseEntity<?> debugSession(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            return ResponseEntity.ok("Session ID: " + session.getId() + ", User: " + getUserFromSession(session));
+        } else {
+            return ResponseEntity.ok("No active session");
+        }
     }
 }

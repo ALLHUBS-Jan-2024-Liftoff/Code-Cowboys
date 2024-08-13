@@ -10,7 +10,7 @@ public class User extends AbstractEntity{
 
     private Long userId;
 
-    private String userName;
+    private String username;
 
     private String email;
 
@@ -44,26 +44,31 @@ public class User extends AbstractEntity{
     public User() {
     }
 
-    public User(Long userId, String userName, String email, String pwHash, String phoneNumber, String address, String city, String state, String zipcode, String firstName, String lastName, Date createdAt, Date lastLogin, String role) {
-        this.userId = userId;
-        this.userName = userName;
+    public User(String username, String password, String firstName, String lastName,
+                String email, String phoneNumber, String address, String city,
+                String state, String zipcode, String role) {
+        this.username = username;
+        this.pwHash = encoder.encode(password);
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
-        this.pwHash = pwHash;
         this.phoneNumber = phoneNumber;
         this.address = address;
         this.city = city;
         this.state = state;
         this.zipcode = zipcode;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.createdAt = createdAt;
-        this.lastLogin = lastLogin;
         this.role = "user";
+        this.createdAt = new Date();
+        this.lastLogin = null; // Set to null initially
     }
 
-    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address, String role) {
-        super();
-    }
+//    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address, String city, String state, String zipcode, String user) {
+//        super();
+//    }
+
+//    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address, String role) {
+//        super();
+//    }
 
 //    public User(String username, String password, String firstName, String lastName, String email, String phoneNumber, String address) {
 //   }
@@ -71,7 +76,7 @@ public class User extends AbstractEntity{
 
 
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     public boolean isMatchingPassword(String password) {
