@@ -1,6 +1,8 @@
 package org.launchcode.ranchsupply.controller;
 
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.launchcode.ranchsupply.model.User;
 import org.launchcode.ranchsupply.model.dto.ProductDto;
 import org.launchcode.ranchsupply.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/products")
-@CrossOrigin(origins = "http://localhost:5173")
+//@CrossOrigin(origins = "http://localhost:5173")
 public class ProductController {
     @Autowired
     private ProductService productservice;
+
+
 
     // get single product
     @GetMapping("/{productId}")
@@ -29,6 +33,8 @@ public class ProductController {
     // get all the products
     @GetMapping
     public ResponseEntity<List<ProductDto>> getAllProducts(){
+//        User user = authenticationController.getUserFromSession(session);
+//        if (user != null){
         List<ProductDto> products = productservice.getAllProducts();
         return ResponseEntity.ok(products);
     }

@@ -1,30 +1,35 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Badge, Card, Col } from "react-bootstrap";
 import { Modal, Button } from "react-bootstrap";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
-// import { addItem } from "../../services/CartService";
+import { toast } from "react-toastify";
+import { CartContext } from "../../context/CartProvider";
+import { UserContext } from "../../context/UserProvider";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
-  const [userId, setUserId] = useState(1);
+  const { addItem } = useContext(CartContext);
+  // const { isLogin } = useContext(UserContext);
 
-  //   const handleAddToCart = (productId, quantity = 1) => {
-  //     const data = {
-  //       productId,
-  //       quantity,
-  //     };
-  //     // function call to add item to cart
-
-  //     addItem(userId, data)
-  //       .then((response) => {
-  //         console.log(response.data);
-  //         navigate("/cart");
-  //       })
-  //       .catch((error) => {
-  //         console.error(error);
-  //       });
-  //   };
+  const handleAddToCart = (productId, quantity = 1) => {
+    if (true) {
+      const data = {
+        productId,
+        quantity,
+      };
+      // function call to add item to cart
+      addItem(data, () => {
+        toast.success("Item added to cart", {
+          position: "bottom-right",
+        });
+      });
+    } else {
+      toast.error("Please login to add item to cart", {
+        position: "bottom-right",
+      });
+    }
+  };
 
   return (
     <Col className="mb-3" md={6} lg={4} xl={3}>
@@ -34,7 +39,6 @@ const ProductCard = ({ product }) => {
           alt={product.title}
           width="100%"
           height="180px"
-          // className="card-img-top"
           onClick={() => navigate(`/product/${product.productId}`)}
           style={{
             objectFit: "contain",
@@ -54,7 +58,7 @@ const ProductCard = ({ product }) => {
           <h6
             className="mb-0 product-title"
             style={{ minHeight: "46px" }}
-            // onClick={() => navigate(`/product/${1}`)}
+            onClick={() => navigate(`/product/${product.productId}`)}
           >
             {product.title.length > 60
               ? product.title.slice(0, 60) + "..."
@@ -87,8 +91,7 @@ const ProductCard = ({ product }) => {
             size="sm"
             disabled={product.quantity <= 0}
             onClick={() => {
-              //   handleAddToCart(product.productId);
-              console.log("Added to cart");
+              handleAddToCart(product.productId);
             }}
           >
             Add to Cart
