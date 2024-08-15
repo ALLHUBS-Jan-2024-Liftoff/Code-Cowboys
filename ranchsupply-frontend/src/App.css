@@ -1,0 +1,29 @@
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1;
+  }
+  
+  .footer {
+    margin-top: auto;
+    background-color: #333; /* Adjust as needed */
+    color: white;
+    padding: 1px 0;
+    text-align: center;
+    position: relative;
+    z-index: 10; 
+  }
+
+  .sidebar {
+    margin-top: 50px;
+    z-index: 5
+  }

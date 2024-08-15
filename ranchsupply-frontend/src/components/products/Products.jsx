@@ -3,6 +3,7 @@ import { Container, Row, Spinner } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ProductCard from "./ProductCard";
 import { listProducts } from "../../services/ProductService";
+import Sidebar from "../sidebar/sidebar";
 
 const Products = () => {
   const [currentPage, setCurrentPage] = useState(0);
@@ -28,6 +29,7 @@ const Products = () => {
   }
   return (
     <>
+       <Sidebar />
       <div>
         {true && (
           <InfiniteScroll

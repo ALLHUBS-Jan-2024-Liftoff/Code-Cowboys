@@ -1,0 +1,20 @@
+.price-title {
+    margin-top: 20px;
+  }
+  
+  .ml {
+    margin-left: 10px;
+  }
+  .price-item {
+    display: block;
+    margin-bottom: 10px; /* Optional: Add some space between the items */
+}
+.sidebar-label-container {
+    display: block;
+    margin-bottom: 10px; /* Add space between the labels */
+}
+
+.input-container {
+    display: block;
+    margin-bottom: 10px; /* Add space between the input components */
+}
