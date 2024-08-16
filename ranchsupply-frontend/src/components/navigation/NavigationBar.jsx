@@ -8,6 +8,7 @@ import "./NavigationBar.css";
 import { CartContext } from "../../context/CartProvider";
 import { UserContext } from "../../context/UserProvider";
 
+
 const NavigationBar = () => {
   const [expanded, setExpanded] = useState(false);
   const navigate = useNavigate();
@@ -66,6 +67,9 @@ const NavigationBar = () => {
               </Nav.Link>
               <Nav.Link as={NavLink} to="/contact">
                 Contact Us
+              </Nav.Link>
+              <Nav.Link as={NavLink} to="/admin">
+                Admin
               </Nav.Link>
             </Nav>
             <Nav>
