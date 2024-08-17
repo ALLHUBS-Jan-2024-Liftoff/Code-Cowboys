@@ -1,11 +1,15 @@
 package org.launchcode.ranchsupply.controller;
 
+import com.stripe.exception.StripeException;
 import jakarta.validation.Valid;
 import org.launchcode.ranchsupply.model.Order;
 import org.launchcode.ranchsupply.model.dto.CreateOrderRequest;
 import org.launchcode.ranchsupply.model.dto.OrderDto;
 import org.launchcode.ranchsupply.model.dto.UpdateOrderRequest;
+
+import org.launchcode.ranchsupply.response.PaymentResponse;
 import org.launchcode.ranchsupply.service.OrderService;
+import org.launchcode.ranchsupply.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +24,15 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
+    @Autowired
+    private PaymentService paymentService;
+
     //Create Order
     @PostMapping()
-    public ResponseEntity<OrderDto> createOrder(@Valid @RequestBody CreateOrderRequest newRequest){
-        OrderDto order = orderService.createOrder(newRequest);
-        return new ResponseEntity<OrderDto>(order, HttpStatus.CREATED);
+    public ResponseEntity<PaymentResponse> createOrder(@Valid @RequestBody CreateOrderRequest newRequest) throws StripeException {
+        Order order = orderService.createOrder(newRequest);
+        PaymentResponse response = paymentService.createPaymentLink(order);
+        return  ResponseEntity.ok(response);
     }
 
     //get order by orderId

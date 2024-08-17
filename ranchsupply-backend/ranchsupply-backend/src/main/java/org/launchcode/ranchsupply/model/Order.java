@@ -39,7 +39,7 @@ public class Order {
     @Column(nullable = false)
     private String state;
 
-    @Column(length=10,nullable = false)
+    @Column(length = 10, nullable = false)
     private String shippingPhone;
 
     @Column(nullable = true)
@@ -52,12 +52,13 @@ public class Order {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems = new ArrayList<>();
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id",nullable = false)
+    @JoinColumn(name = "id", nullable = false)
     private User user;
+
     public Order() {
     }
 
-    public Order(Long orderId, String orderName, User user,String orderStatus, String paymentStatus, double orderAmount, String shippingAddress, String zipCode, String city, String state, String shippingPhone, LocalDate deliveryDate, Date createdAt, List<OrderItem> orderItems) {
+    public Order(Long orderId, String orderName, User user, String orderStatus, String paymentStatus, double orderAmount, String shippingAddress, String zipCode, String city, String state, String shippingPhone, LocalDate deliveryDate, Date createdAt, List<OrderItem> orderItems) {
         this.orderId = orderId;
         this.orderName = orderName;
         this.orderStatus = orderStatus;
@@ -154,14 +155,6 @@ public class Order {
         this.shippingPhone = shippingPhone;
     }
 
-    public LocalDate getDeliveredDate() {
-        return deliveryDate;
-    }
-
-    public void setDeliveredDate(LocalDate deliveredDate) {
-        this.deliveryDate = deliveredDate;
-    }
-
     public Date getCreatedAt() {
         return createdAt;
     }
@@ -186,7 +179,17 @@ public class Order {
         this.user = user;
     }
 
-    public LocalDate getDeliveryDate() {return deliveryDate;}
+    public LocalDate getDeliveryDate() {
+        return deliveryDate;
+    }
 
-    public void setDeliveryDate(LocalDate deliveryDate) {this.deliveryDate = deliveryDate;}
+    public void setDeliveryDate(LocalDate deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
 }
+
+
