@@ -136,12 +136,12 @@ public class OrderDto {
         this.shippingPhone = shippingPhone;
     }
 
-    public LocalDate getDeliveredDate() {
+    public LocalDate getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveredDate(LocalDate deliveredDate) {
-        this.deliveryDate = deliveredDate;
+    public void setDeliveryDate(LocalDate deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 
     public Date getCreatedAt() {

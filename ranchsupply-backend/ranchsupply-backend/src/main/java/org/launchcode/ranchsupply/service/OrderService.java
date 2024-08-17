@@ -43,7 +43,7 @@ public class OrderService {
         return orderDtos;
     }
     //Method to create order
-    public OrderDto createOrder(CreateOrderRequest newOrderRequest){
+    public Order createOrder(CreateOrderRequest newOrderRequest){
         // Get user from the database based on userId
         User user = userRepository.findById(newOrderRequest.getUserId())
                 .orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
@@ -105,7 +105,8 @@ public class OrderService {
         cartRepository.save(cart);
         Order placedOrder = orderRepository.save(order);
 
-        return  modelMapper.map(placedOrder, OrderDto.class);
+//        return  modelMapper.map(placedOrder, OrderDto.class);
+        return placedOrder;
     }
     //To delete order
 
