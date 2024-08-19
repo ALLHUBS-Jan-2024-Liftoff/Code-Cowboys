@@ -6,9 +6,9 @@ import { BrowserRouter, Route, Routes, Link} from "react-router-dom";
 import Home from "./components/home/Home";
 import Footer from "./components/home/Footer";
 import Products from "./components/products/Products";
-import Login from "./components/Authentication/Login";
-import Register from "./components/Authentication/Register";
-import Logout from "./components/Authentication/Logout";
+import Login from "./Authentication/Login";
+import Register from "./Authentication/Register";
+import Logout from "./Authentication/Logout";
 
 
 function App() {
@@ -18,34 +18,13 @@ function App() {
     <>
       <BrowserRouter>
         <NavigationBar />
-        <nav>
-          {!authenticated ? (
-            <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
-            </>
-          ) : (
-            <>
-              <Link to="/products">Products</Link>
-              <Link to="/logout">Logout</Link>
-            </>
-          )}
-        </nav>
         <Routes>
-          {/* Public Routes */}
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/login" element={<Login setAuthenticated={setAuthenticated} />} />
+          <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
+          <Route exact path="/products" element={<Products />} />
+          <Route exact path="/logout" element={<Logout />} />
 
-          {/* Private Routes */}
-          {authenticated ? (
-            <>
-              <Route exact path="/products" element={<Products />} />
-              <Route exact path="/logout" element={<Logout setAuthenticated={setAuthenticated} />} />
-            </>
-          ) : (
-            <Route path="*" element={<Navigate to="/login" replace />} />
-          )}
         </Routes>
         <Footer />
       </BrowserRouter>
