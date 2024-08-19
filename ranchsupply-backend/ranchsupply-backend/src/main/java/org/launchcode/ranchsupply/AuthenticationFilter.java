@@ -20,14 +20,13 @@ public class AuthenticationFilter implements HandlerInterceptor {
 
     @Autowired
     AuthenticationController authenticationController;
-    private static final List<String> whitelist = Arrays.asList("/user/login", "/user/register", "/user/logout","/products","/orders","/cart");
+    private static final List<String> whitelist = Arrays.asList("/user/login", "/user/register", "/user/logout");
 
     private static boolean isWhitelisted(String path) {
         for (String pathRoot : whitelist) {
             if (path.startsWith(pathRoot)) {
                 return true;
             }
-
         }
         return false;
     }
