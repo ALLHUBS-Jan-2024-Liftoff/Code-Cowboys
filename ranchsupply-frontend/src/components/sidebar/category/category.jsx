@@ -3,9 +3,6 @@ import Input from "../components/input";
 
 function Category({ handleChange }) {
   return (
-    <div className="category-container">
-      <h2 className="sidebar-title">Category</h2>
-
       <div className="category-options">
         <label className="sidebar-label-container">
           <input
