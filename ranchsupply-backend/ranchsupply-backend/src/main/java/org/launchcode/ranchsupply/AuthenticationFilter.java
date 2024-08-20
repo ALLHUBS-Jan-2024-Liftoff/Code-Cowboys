@@ -20,6 +20,7 @@ public class AuthenticationFilter implements HandlerInterceptor {
 
     @Autowired
     AuthenticationController authenticationController;
+
     private static final List<String> whitelist = Arrays.asList("/user/login", "/user", "/user/register", "/user/logout","/products","/orders","/cart","/categories");
 
 
@@ -28,6 +29,7 @@ public class AuthenticationFilter implements HandlerInterceptor {
             if (path.startsWith(pathRoot)) {
                 return true;
             }
+
         }
         return false;
     }
