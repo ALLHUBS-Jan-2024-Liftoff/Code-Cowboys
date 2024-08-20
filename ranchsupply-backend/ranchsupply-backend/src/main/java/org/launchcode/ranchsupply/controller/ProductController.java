@@ -38,7 +38,7 @@ public class ProductController {
         return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
     //Search products by serach term
-    @GetMapping("/searchproducts")
+    @GetMapping("/search")
     public ResponseEntity<List<ProductDto>> searchProductsByTerm(@RequestParam String searchTerm){
         List<ProductDto> matchingProducts = productservice.findProductsBySearchTerm(searchTerm);
         return ResponseEntity.ok(matchingProducts);
