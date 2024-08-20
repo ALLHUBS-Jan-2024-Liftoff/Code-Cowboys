@@ -107,10 +107,39 @@ public class OrderService {
 
         return  modelMapper.map(placedOrder, OrderDto.class);
     }
-    //To delete order
+    public OrderDto updateOrder(Long orderId, UpdateOrderRequest updateOrderRequest) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order Not found"));
 
-    //To update Order
+        // Update the order fields with the new data
+        order.setOrderName(updateOrderRequest.getOrderName());
+        order.setShippingAddress(updateOrderRequest.getShippingAddress());
+        order.setZipCode(updateOrderRequest.getZipCode());
+        order.setCity(updateOrderRequest.getCity());
+        order.setState(updateOrderRequest.getState());
+        order.setShippingPhone(updateOrderRequest.getShippingPhone());
+        order.setOrderStatus(updateOrderRequest.getOrderStatus());
+        order.setPaymentStatus(updateOrderRequest.getPaymentStatus());
+        order.setDeliveryDate(updateOrderRequest.getDeliveryDate());
 
-    //get all orders
+        Order updatedOrder = orderRepository.save(order);
+        return modelMapper.map(updatedOrder, OrderDto.class);
+    }
+
+    // Method to delete order
+    public void deleteOrder(Long orderId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order Not found"));
+
+        orderRepository.delete(order);
+    }
+
+    // Method to get all orders
+    public List<OrderDto> getAllOrders() {
+        List<Order> orders = orderRepository.findAll();
+        return orders.stream()
+                .map(order -> modelMapper.map(order, OrderDto.class))
+                .collect(Collectors.toList());
+    }
 
 }

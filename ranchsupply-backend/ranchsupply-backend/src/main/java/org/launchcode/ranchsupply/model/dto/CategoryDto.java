@@ -19,6 +19,8 @@ public class CategoryDto {
 
     private Date createdAt;
     private Date updatedAt;
+    private String categoryImage;
+
 
     public CategoryDto() {
     }
@@ -27,6 +29,7 @@ public class CategoryDto {
         this.categoryId = categoryId;
         this.categoryTitle = categoryTitle;
         this.description = description;
+        this.categoryImage = categoryImage;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
@@ -54,6 +57,10 @@ public class CategoryDto {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getCategoryImage() {return categoryImage;}
+
+    public void setCategoryImage(String categoryImage) {this.categoryImage = categoryImage;}
 
     public Date getCreatedAt() {
         return createdAt;

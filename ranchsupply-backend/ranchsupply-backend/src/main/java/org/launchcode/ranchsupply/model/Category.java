@@ -21,6 +21,9 @@ public class Category {
     @Column(nullable = false)
     private String description;
 
+    @Column(name = "category_image", nullable = false)
+    private String categoryImage;
+
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private Date createdAt;
@@ -38,6 +41,7 @@ public class Category {
         this.categoryId = categoryId;
         this.categoryTitle = categoryTitle;
         this.description = description;
+        this.categoryImage = categoryImage;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
         this.products = products;
@@ -66,6 +70,10 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String getCategoryImage() {return categoryImage;}
+
+    public void setCategoryImage(String categoryImage) {this.categoryImage = categoryImage;}
 
     public Date getCreatedAt() {
         return createdAt;
