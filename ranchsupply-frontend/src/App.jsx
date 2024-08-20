@@ -22,6 +22,11 @@ import Register from "./userAuthentication/Register";
 import Logout from "./userAuthentication/Logout";
 import PaymentSuccess from "./components/payment/PaymentSuccess";
 import PaymentFailed from "./components/payment/PaymentFailed";
+import Login from "./userAuthentication/Login";
+import Register from "./userAuthentication/Register";
+import Logout from "./userAuthentication/Logout";
+
+
 
 function App() {
   // const [count, setCount] = useState(0);

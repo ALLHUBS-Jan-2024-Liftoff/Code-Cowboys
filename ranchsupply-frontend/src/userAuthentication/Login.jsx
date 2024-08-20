@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useContext } from "react";
 //import axios from "axios";
 import { UserContext } from "../context/UserProvider";
@@ -35,6 +36,36 @@ const handleLogin = async (e) => {
     setMessage(error.message || "Login failed");
   }
 };
+=======
+import React, { useState } from "react";
+import axios from "axios";
+
+function Login({ setAuthenticated }) {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/user/login",
+        {
+          username,
+          password,
+        },
+        {
+          withCredentials: true,
+        }
+      );
+      setAuthenticated(true);
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage(error.response?.data?.message || "Login failed");
+    }
+  };
+
+>>>>>>> 3d1838b (login, register, and logout  forms added)
   return (
     <div>
       <h2>Login</h2>
