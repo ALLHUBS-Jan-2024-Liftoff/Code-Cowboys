@@ -185,4 +185,8 @@ public class Order {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public LocalDate getDeliveryDate() {return deliveryDate;}
+
+    public void setDeliveryDate(LocalDate deliveryDate) {this.deliveryDate = deliveryDate;}
 }

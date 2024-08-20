@@ -4,6 +4,7 @@ import jakarta.validation.Valid;
 import org.launchcode.ranchsupply.model.Order;
 import org.launchcode.ranchsupply.model.dto.CreateOrderRequest;
 import org.launchcode.ranchsupply.model.dto.OrderDto;
+import org.launchcode.ranchsupply.model.dto.UpdateOrderRequest;
 import org.launchcode.ranchsupply.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -40,9 +41,25 @@ public class OrderController {
         return ResponseEntity.ok(orders);
     }
 
-    //update order
+    @PutMapping("/{orderId}")
+    public ResponseEntity<OrderDto> updateOrder(
+            @PathVariable Long orderId,
+            @Valid @RequestBody UpdateOrderRequest updateRequest) {
+        OrderDto updatedOrder = orderService.updateOrder(orderId, updateRequest);
+        return ResponseEntity.ok(updatedOrder);
+    }
 
-    //delete order
+    // Delete order
+    @DeleteMapping("/{orderId}")
+    public ResponseEntity<Void> deleteOrder(@PathVariable Long orderId) {
+        orderService.deleteOrder(orderId);
+        return ResponseEntity.noContent().build();
+    }
 
-    //get all orders
+    // Get all orders
+    @GetMapping()
+    public ResponseEntity<List<OrderDto>> getAllOrders() {
+        List<OrderDto> allOrders = orderService.getAllOrders();
+        return ResponseEntity.ok(allOrders);
+    }
 }
