@@ -65,7 +65,7 @@ const CartProvider = ({ children }) => {
     }
   };
   useEffect(() => {
-    if (isLogin) {
+    if (true) {
       console.log("user logged in");
       fetchUserCart(userId);
     }
