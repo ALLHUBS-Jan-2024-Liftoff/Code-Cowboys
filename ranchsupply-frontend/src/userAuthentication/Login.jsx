@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { UserContext } from "../context/UserProvider";
+import { doLogin } from "../services/UserService";
 
-function Login({ setAuthenticated }) {
+function Login({ }) {
+  const { setIsLogin, setUserData } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
@@ -9,20 +12,20 @@ function Login({ setAuthenticated }) {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:8080/user/login",
-        {
-          username,
-          password,
-        },
-        {
-          withCredentials: true,
-        }
-      );
-      setAuthenticated(true);
-      setMessage(response.data.message);
+      const response = await doLogin({ username, password });
+      console.log("Login response:", response);
+      if (response.success) {
+        setIsLogin(true);
+        setUserData(response.user);
+        setAuthenticated(true);
+       // navigate("/");
+        setMessage("Login successful!");
+      } else {
+        setMessage(response.message);
+      }
     } catch (error) {
-      setMessage(error.response?.data?.message || "Login failed");
+      console.error("Login error:", error);
+      setMessage(error.message || "Login failed");
     }
   };
 

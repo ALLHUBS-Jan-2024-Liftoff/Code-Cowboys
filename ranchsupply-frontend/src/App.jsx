@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes,  Navigate, Link, } from "react-router-dom";
 import Home from "./components/home/Home";
 import Footer from "./components/home/Footer";
 import Products from "./components/products/Products";
@@ -25,7 +25,9 @@ import Logout from "./userAuthentication/Logout";
 
 
 function App() {
-  const [count, setCount] = useState(0);
+  // const [count, setCount] = useState(0);
+
+  const [authenticated, setAuthenticated] = useState(0);
 
   return (
     <>
@@ -47,9 +49,9 @@ function App() {
               <Route exact path="/about" element={<AboutUs />} />
               <Route exact path="/contact" element={<ContactUs />} />
               <Route exact path="/products" element={<Products />} />
-              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/login" element={<Login setAuthenticated={setAuthenticated} />} />
               <Route exact path="/register" element={<Register />} />
-              <Route exact path="/logout" element={<Logout />} />
+              <Route exact path="/logout" element={<Logout setAuthenticated={setAuthenticated}/>} />
               <Route
                 path="/product/:productId"
                 element={<ProductDetailPage />}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { registerUser } from '../services/UserService';
 
 function Register(
 ) {
@@ -15,25 +15,22 @@ function Register(
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    const formData = {
+      username,
+      email,
+      password,
+      mobileNumber,
+      address,
+      city,
+      state,
+      zipcode,
+    };
+
     try {
-      const response = await axios.post(
-        'http://localhost:8080/user/register',
-        {
-          username,
-          email,
-          password,
-          mobileNumber,
-          address,
-          city,
-          state,
-          zipcode,
-        },
-        {
-          withCredentials: true,
-        }
-      );
-      setMessage(response.data.message);
+      const response = await registerUser(formData);
+      setMessage(response.message);
     } catch (error) {
+      console.log(error);
       setMessage(error.response?.data?.message || 'Registration failed');
     }
   };

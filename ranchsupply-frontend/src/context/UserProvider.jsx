@@ -34,13 +34,15 @@ const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider
       value={{
-        userData: userData,
-        isLogin: isLogin,
-        doLogin: doLogin,
+        isLogin,
+        setIsLogin,
+        userData,
+        setUserData,
       }}
     >
       {children}
     </UserContext.Provider>
   );
 };
+
 export default UserProvider;

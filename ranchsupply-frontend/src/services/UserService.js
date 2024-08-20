@@ -10,6 +10,36 @@ export const getUserById = (userId) => {
 
 //user Login
 export const doLogin = async (data) => {
-  const res = await axios.post(REST_API_BASE_URL + "/login", data);
-  return res.data;
+  try {
+    const res = await axios.post(REST_API_BASE_URL + "/login", data);
+    console.log("Login response:", res.data);
+    if (res.data.success) {
+      return {
+        success: true,
+        user: res.data.user,
+      };
+    } else {
+      return {
+        success: false,
+        message: res.data.message,
+      };
+    }
+  } catch (error) {
+    console.error("Login failed:", error.response ? error.response.data : error.message);
+    return {
+      success: false,
+      message: error.response?.data?.message || "Login failed",
+    };
+  }
+};
+
+// User Registration
+export const registerUser = async (data) => {
+  try {
+    const res = await axios.post(REST_API_BASE_URL + "/register", data);
+    return res.data;
+  } catch (error) {
+    console.error("Registration failed:", error.response ? error.response.data : error.message);
+    throw error;
+  }
 };
