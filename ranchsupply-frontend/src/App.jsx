@@ -20,8 +20,8 @@ import NavigationBar from "./components/navigation/NavigationBar";
 import Login from "./userAuthentication/Login";
 import Register from "./userAuthentication/Register";
 import Logout from "./userAuthentication/Logout";
-
-
+import PaymentSuccess from "./components/payment/PaymentSuccess";
+import PaymentFailed from "./components/payment/PaymentFailed";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -33,7 +33,7 @@ function App() {
       <UserProvider>
         <CartProvider>
           <BrowserRouter>
-            <NavigationBar/>
+            <NavigationBar />
             <ToastContainer
               position="top-right"
               hideProgressBar={true}
@@ -60,6 +60,14 @@ function App() {
               <Route path="/orders" element={<Orders />}></Route>
               <Route path="/order/:orderId" element={<OrderDetails />}></Route>
               <Route exact path="/admin" element={<Admin />} />
+              <Route
+                path="/payment/success/:orderId"
+                element={<PaymentSuccess />}
+              ></Route>
+              <Route
+                path="/payment/fail/:orderId"
+                element={<PaymentFailed />}
+              ></Route>
             </Routes>
             <Footer />
           </BrowserRouter>

@@ -46,11 +46,11 @@ const OrderCheckout = () => {
       const result = await createOrder(data);
       setCart({ items: [] });
       console.log("result :" + result.orderId);
-      //   if (result.paymentUrl) {
-      //     console.log("Payment Url: " + result.paymentUrl);
-      //     window.location.href = result.paymentUrl;
-      //   }
-      navigate("/orders");
+      if (result.paymentUrl) {
+        console.log("Payment Url: " + result.paymentUrl);
+        window.location.href = result.paymentUrl;
+      }
+      // navigate("/orders");
     } catch (error) {
       console.error(error);
     }
