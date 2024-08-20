@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Table, Form, Button } from 'react-bootstrap';
+import { Table, Form, Button, Container } from 'react-bootstrap';
 import * as productService from '../../../services/ProductService';
 import * as categoryService from '../../../services/CategoryService';
 
@@ -84,13 +84,19 @@ const AdminTable = ({ rows, refreshData, type }) => {
     );
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+    return new Date(dateString).toLocaleDateString(undefined, options);
+  };
+
   return (
-    <Table striped bordered hover>
+   <Container fluid>
+     <Table responsive = "sm" striped bordered hover>
       <thead>
         <tr>
           {type === 'products' && (
             <>
-              <th>Product ID</th>
+              <th>Prouct Id</th>
               <th>Category Title</th>
               <th>Brand</th>
               <th>Title</th>
@@ -107,13 +113,14 @@ const AdminTable = ({ rows, refreshData, type }) => {
           {type === 'categories' && (
             <>
               <th>Category ID</th>
-              <th>Title</th>
+              <th>Category Title</th>
               <th>Description</th>
+              <th>Category images</th>
               <th>Created At</th>
               <th>Updated At</th>
             </>
           )}
-          <th>Actions</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -131,17 +138,17 @@ const AdminTable = ({ rows, refreshData, type }) => {
                 <td>{renderCell(row, 'quantity', row.quantity)}</td>
                 <td>{renderCell(row, 'productImage', row.productImage)}</td>
                 <td>{renderCell(row, 'size', row.size)}</td>
-                <td>{row.createdAt}</td>
-                <td>{row.updatedAt}</td>
+                <td>{formatDate(row.createdAt)}</td>
+                <td>{formatDate(row.updatedAt)}</td>
               </>
             )}
             {type === 'categories' && (
               <>
                 <td>{row.categoryId}</td>
-                <td>{renderCell(row, 'title', row.title)}</td>
+                <td>{renderCell(row, 'categoryTitle', row.categoryTitle)}</td>
                 <td>{renderCell(row, 'description', row.description)}</td>
-                <td>{row.createdAt}</td>
-                <td>{row.updatedAt}</td>
+                <td>{formatDate(row.createdAt)}</td>
+                <td>{formatDate(row.updatedAt)}</td>
               </>
             )}
             <td>
@@ -156,6 +163,7 @@ const AdminTable = ({ rows, refreshData, type }) => {
         ))}
       </tbody>
     </Table>
+  </Container>
   );
 };
 
