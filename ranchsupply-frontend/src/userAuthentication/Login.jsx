@@ -1,12 +1,8 @@
 import React, { useState, useContext } from "react";
-<<<<<<< HEAD
-import React, { useState, useContext } from "react";
 //import axios from "axios";
 import { UserContext } from "../context/UserProvider";
 import { doLogin } from "../services/UserService";
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from "../context/UserProvider";
-import { doLogin } from "../services/UserService";
 
 
 function Login({setAuthenticated }) {
@@ -39,68 +35,6 @@ const handleLogin = async (e) => {
     setMessage(error.message || "Login failed");
   }
 };
-=======
-import React, { useState } from "react";
-import axios from "axios";
-import { UserContext } from "../context/UserProvider";
-import { doLogin } from "../services/UserService";
-import { useNavigate } from 'react-router-dom';
-import { UserContext } from "../context/UserProvider";
-import { doLogin } from "../services/UserService";
-
-function Login({ setAuthenticated}) {
-  const { setIsLogin, setUserData } = useContext(UserContext);
-function Login({ }) {
-  const { setIsLogin, setUserData } = useContext(UserContext);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const navigate = useNavigate();
-
-const handleLogin = async (e) => {
-  e.preventDefault();
-  try {
-    const response = await doLogin({ username, password });
-    console.log("Login response:", response);
-    if (response.success && response.user) {
-      setIsLogin(true);
-      setUserData(response.user);
-      if (setAuthenticated) {
-        setAuthenticated(true);
-      }
-      setMessage("Login successful!");
-      setTimeout(() => {
-        navigate('/');
-      }, 1500);
-    } else {
-      setMessage(response.message || "Login failed");
-    }
-  } catch (error) {
-    console.error("Login error:", error);
-    setMessage(error.message || "Login failed");
-  }
-};
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await doLogin({ username, password });
-      console.log("Login response:", response);
-      if (response.success) {
-        setIsLogin(true);
-        setUserData(response.user);
-        setAuthenticated(true);
-       // navigate("/");
-        setMessage("Login successful!");
-      } else {
-        setMessage(response.message);
-      }
-    } catch (error) {
-      console.error("Login error:", error);
-      setMessage(error.message || "Login failed");
-    }
-  };
-
->>>>>>> 3d1838b (login, register, and logout  forms added)
   return (
     <div>
       <h2>Login</h2>
