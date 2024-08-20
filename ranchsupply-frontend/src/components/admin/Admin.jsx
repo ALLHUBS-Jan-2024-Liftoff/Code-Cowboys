@@ -16,13 +16,10 @@ const Admin = () => {
     title: '',
     description: '',
     price: '',
-    discountedPrice: '',
     quantity: '',
     productImage: '',
     size: '',
     categoryId: '',  
-    categoryTitle: '',
-    categoryDescription: ''
   });
 
   useEffect(() => {
@@ -78,14 +75,12 @@ const Admin = () => {
           title: newItem.title,
           description: newItem.description,
           price: parseFloat(newItem.price),
-          discountedPrice: parseFloat(newItem.discountedPrice),
+          discountedPrice: newItem.discountedPrice ? parseFloat(newItem.discountedPrice) : null,  
           quantity: parseInt(newItem.quantity, 10),
           productImage: newItem.productImage,
-          size: newItem.size,
+          size: newItem.size ? newItem.size :null,
           category: {
             categoryId: parseInt(newItem.categoryId, 10),
-            categoryTitle: newItem.categoryTitle,
-            description: newItem.categoryDescription
           },
           createdAt: new Date(),
           updatedAt: new Date()
@@ -195,17 +190,6 @@ const Admin = () => {
                   />
                 </Form.Group>
 
-                <Form.Group controlId="formDiscountedPrice">
-                  <Form.Label>Discounted Price</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="Enter discounted price"
-                    name="discountedPrice"
-                    value={newItem.discountedPrice}
-                    onChange={handleInputChange}
-                  />
-                </Form.Group>
-
                 <Form.Group controlId="formQuantity">
                   <Form.Label>Quantity</Form.Label>
                   <Form.Control
@@ -246,28 +230,6 @@ const Admin = () => {
                     placeholder="Enter category ID"
                     name="categoryId"
                     value={newItem.categoryId}
-                    onChange={handleInputChange}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="formCategoryTitle">
-                  <Form.Label>Category Title</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter category title"
-                    name="categoryTitle"
-                    value={newItem.categoryTitle}
-                    onChange={handleInputChange}
-                  />
-                </Form.Group>
-
-                <Form.Group controlId="formCategoryDescription">
-                  <Form.Label>Category Description</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter category description"
-                    name="categoryDescription"
-                    value={newItem.categoryDescription}
                     onChange={handleInputChange}
                   />
                 </Form.Group>
