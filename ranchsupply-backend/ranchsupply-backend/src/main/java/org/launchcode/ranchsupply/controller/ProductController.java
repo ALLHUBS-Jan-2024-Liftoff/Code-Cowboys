@@ -32,8 +32,6 @@ public class ProductController {
     // get all the products
     @GetMapping
     public ResponseEntity<List<ProductDto>> getAllProducts(){
-//        User user = authenticationController.getUserFromSession(session);
-//        if (user != null){
         List<ProductDto> products = productservice.getAllProducts();
         return ResponseEntity.ok(products);
     }
