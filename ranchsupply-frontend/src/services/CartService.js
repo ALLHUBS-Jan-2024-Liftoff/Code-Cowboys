@@ -4,9 +4,7 @@ const REST_API_BASE_URL = "http://localhost:8080/cart";
 // add item to cart
 export const addItemToCart = async (data, userId) => {
   const res = await axios.post(`${REST_API_BASE_URL}/${userId}`, data, {
-    headers: {
-      "Content-Type": "application/json",
-    },
+    withCredentials: true,
   });
   return res.data;
 };

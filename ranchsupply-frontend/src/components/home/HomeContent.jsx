@@ -29,7 +29,7 @@ const HomeContent = () => {
               vel itaque ad magni porro incidunt!
             </p>
             {/* If user is logged in dont show login/register button otherwise show buttons  */}
-            {false ? (
+            {/* {false ? (
               ""
             ) : (
               <div>
@@ -40,7 +40,7 @@ const HomeContent = () => {
                   Register
                 </Button>
               </div>
-            )}
+            )} */}
           </Col>
           <Col xs={12} md={6}>
             <img
