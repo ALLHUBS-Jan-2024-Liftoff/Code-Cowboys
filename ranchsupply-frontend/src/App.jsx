@@ -1,7 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-
-import { BrowserRouter, Route, Routes,  Navigate, Link, } from "react-router-dom";
 import { BrowserRouter, Route, Routes,  Navigate, Link, } from "react-router-dom";
 import Home from "./components/home/Home";
 import Footer from "./components/home/Footer";

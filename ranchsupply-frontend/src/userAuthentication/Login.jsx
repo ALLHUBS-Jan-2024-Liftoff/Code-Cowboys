@@ -3,11 +3,9 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../context/UserProvider";
 import { doLogin } from "../services/UserService";
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from "../context/UserProvider";
-import { doLogin } from "../services/UserService";
 
 
-function Login({ }) {
+function Login({setAuthenticated }) {
   const { setIsLogin, setUserData } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
