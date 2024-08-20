@@ -18,6 +18,9 @@ import AboutUs from "./components/home/AboutUs";
 import ContactUs from "./components/home/ContactUs";
 import Admin from "./components/admin/Admin";
 import NavigationBar from "./components/navigation/NavigationBar";
+import Login from "./userAuthentication/Login";
+import Register from "./userAuthentication/Register";
+import Logout from "./userAuthentication/Logout";
 
 
 
@@ -44,6 +47,9 @@ function App() {
               <Route exact path="/about" element={<AboutUs />} />
               <Route exact path="/contact" element={<ContactUs />} />
               <Route exact path="/products" element={<Products />} />
+              <Route exact path="/login" element={<Login />} />
+              <Route exact path="/register" element={<Register />} />
+              <Route exact path="/logout" element={<Logout />} />
               <Route
                 path="/product/:productId"
                 element={<ProductDetailPage />}
