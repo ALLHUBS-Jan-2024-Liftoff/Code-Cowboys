@@ -13,17 +13,31 @@ export const doLogin = async (data) => {
   try {
     const res = await axios.post(REST_API_BASE_URL + "/login", data);
     console.log("Login response:", res.data);
+<<<<<<< HEAD
     if (res.data && res.data.id) {
+=======
+   // if (res.data.success) {
+>>>>>>> 48d993b (login working)
       return {
         success: true,
         user: res.data,
       };
+<<<<<<< HEAD
     } else {
       return {
         success: false,
         message: "Invalid login response",
       };
     }
+=======
+    // } else {
+    //   console.log(res);
+    //   return {
+    //     success: false,
+    //     message: res.data.message,
+    //   };
+  //  }
+>>>>>>> 48d993b (login working)
   } catch (error) {
     console.error("Login failed:", error.response ? error.response.data : error.message);
     return {
