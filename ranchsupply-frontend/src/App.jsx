@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./App.css";
-
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./components/home/Home";
 import Footer from "./components/home/Footer";
@@ -18,18 +17,17 @@ import AboutUs from "./components/home/AboutUs";
 import ContactUs from "./components/home/ContactUs";
 import Admin from "./components/admin/Admin";
 import NavigationBar from "./components/navigation/NavigationBar";
-
-
+import PaymentSuccess from "./components/payment/PaymentSuccess";
+import PaymentFailed from "./components/payment/PaymentFailed";
 
 function App() {
   const [count, setCount] = useState(0);
-
   return (
     <>
       <UserProvider>
         <CartProvider>
           <BrowserRouter>
-            <NavigationBar/>
+            <NavigationBar />
             <ToastContainer
               position="top-right"
               hideProgressBar={true}
@@ -53,6 +51,14 @@ function App() {
               <Route path="/orders" element={<Orders />}></Route>
               <Route path="/order/:orderId" element={<OrderDetails />}></Route>
               <Route exact path="/admin" element={<Admin />} />
+              <Route
+                path="/payment/success/:orderId"
+                element={<PaymentSuccess />}
+              ></Route>
+              <Route
+                path="/payment/fail/:orderId"
+                element={<PaymentFailed />}
+              ></Route>
             </Routes>
             <Footer />
           </BrowserRouter>

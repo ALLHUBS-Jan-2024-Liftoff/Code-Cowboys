@@ -121,11 +121,11 @@ public class UpdateOrderRequest {
         this.paymentStatus = paymentStatus;
     }
 
-    public LocalDate getDeliveredDate() {
+    public LocalDate getDeliveryDate() {
         return deliveryDate;
     }
 
-    public void setDeliveredDate(LocalDate deliveryDate) {
+    public void setDeliveryDate(LocalDate deliveryDate) {
         this.deliveryDate = deliveryDate;
     }
 }

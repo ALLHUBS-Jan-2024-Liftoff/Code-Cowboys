@@ -154,13 +154,6 @@ public class Order {
         this.shippingPhone = shippingPhone;
     }
 
-    public LocalDate getDeliveredDate() {
-        return deliveryDate;
-    }
-
-    public void setDeliveredDate(LocalDate deliveredDate) {
-        this.deliveryDate = deliveredDate;
-    }
 
     public Date getCreatedAt() {
         return createdAt;
@@ -184,5 +177,17 @@ public class Order {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public LocalDate getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(LocalDate deliveryDate) {
+        this.deliveryDate = deliveryDate;
     }
 }

@@ -15,8 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("user")
@@ -136,10 +138,43 @@ public class AuthenticationController {
         return new ResponseEntity<RegisterFormDTO>(registerFormDTO, HttpStatus.OK);
     }
 
-    //get all the users
+//    get all the users
+    @GetMapping("/all")
+    public ResponseEntity<List<RegisterFormDTO>> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        List<RegisterFormDTO> userDTOs = users.stream()
+                .map(user -> modelMapper.map(user, RegisterFormDTO.class))
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(userDTOs, HttpStatus.OK);
+    }
+
 
     //delete user
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<Map<String, String>> deleteUser(@PathVariable Integer id) {
+        userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        userRepository.deleteById(id);
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "User deleted successfully");
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
 
     //update user details
+    @PutMapping("/update/{id}")
+    public ResponseEntity<RegisterFormDTO> updateUser(@PathVariable Integer id, @RequestBody RegisterFormDTO registerFormDTO) {
+        User user = userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+        // Update the user details
+        user.setFirstName(registerFormDTO.getFirstName());
+        user.setLastName(registerFormDTO.getLastName());
+        user.setEmail(registerFormDTO.getEmail());
+        user.setPhoneNumber(registerFormDTO.getPhoneNumber());
+        user.setAddress(registerFormDTO.getAddress());
+        user.setZipCode(registerFormDTO.getZipCode());
+        user.setCity(registerFormDTO.getCity());
+        user.setState(registerFormDTO.getState());
+        userRepository.save(user);
 
+        RegisterFormDTO updatedUserDTO = modelMapper.map(user, RegisterFormDTO.class);
+        return new ResponseEntity<>(updatedUserDTO, HttpStatus.OK);
+    }
 }

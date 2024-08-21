@@ -43,7 +43,7 @@ public class OrderService {
         return orderDtos;
     }
     //Method to create order
-    public OrderDto createOrder(CreateOrderRequest newOrderRequest){
+    public Order createOrder(CreateOrderRequest newOrderRequest){
         // Get user from the database based on userId
         User user = userRepository.findById(newOrderRequest.getUserId())
                 .orElseThrow(() -> new ResourceNotFoundException("User Not Found"));
@@ -105,12 +105,42 @@ public class OrderService {
         cartRepository.save(cart);
         Order placedOrder = orderRepository.save(order);
 
-        return  modelMapper.map(placedOrder, OrderDto.class);
+//        return  modelMapper.map(placedOrder, OrderDto.class);
+        return placedOrder;
     }
-    //To delete order
+    public OrderDto updateOrder(Long orderId, UpdateOrderRequest updateOrderRequest) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order Not found"));
 
-    //To update Order
+        // Update the order fields with the new data
+        order.setOrderName(updateOrderRequest.getOrderName());
+        order.setShippingAddress(updateOrderRequest.getShippingAddress());
+        order.setZipCode(updateOrderRequest.getZipCode());
+        order.setCity(updateOrderRequest.getCity());
+        order.setState(updateOrderRequest.getState());
+        order.setShippingPhone(updateOrderRequest.getShippingPhone());
+        order.setOrderStatus(updateOrderRequest.getOrderStatus());
+        order.setPaymentStatus(updateOrderRequest.getPaymentStatus());
+        order.setDeliveryDate(updateOrderRequest.getDeliveryDate());
 
-    //get all orders
+        Order updatedOrder = orderRepository.save(order);
+        return modelMapper.map(updatedOrder, OrderDto.class);
+    }
+
+    // Method to delete order
+    public void deleteOrder(Long orderId) {
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new ResourceNotFoundException("Order Not found"));
+
+        orderRepository.delete(order);
+    }
+
+    // Method to get all orders
+    public List<OrderDto> getAllOrders() {
+        List<Order> orders = orderRepository.findAll();
+        return orders.stream()
+                .map(order -> modelMapper.map(order, OrderDto.class))
+                .collect(Collectors.toList());
+    }
 
 }
