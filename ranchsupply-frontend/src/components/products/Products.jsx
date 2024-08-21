@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container, Row, Spinner } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ProductCard from "./ProductCard";
+import { listProducts } from "../../services/ProductService";
+import Sidebar from "../sidebar/sidebar";
 import { getAllProducts } from "../../services/ProductService";
 import { toast } from "react-toastify";
 
@@ -30,6 +32,7 @@ const Products = () => {
   
   return (
     <>
+       <Sidebar />
       <div>
         {true && (
           <InfiniteScroll

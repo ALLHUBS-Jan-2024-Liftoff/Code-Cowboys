@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.launchcode.ranchsupply-backend.iml" filepath="$PROJECT_DIR$/.idea/modules/org.launchcode.ranchsupply-backend.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.launchcode.ranchsupply-backend.main.iml" filepath="$PROJECT_DIR$/.idea/modules/org.launchcode.ranchsupply-backend.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/org.launchcode.ranchsupply-backend.test.iml" filepath="$PROJECT_DIR$/.idea/modules/org.launchcode.ranchsupply-backend.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ranchsupply-backend.iml" filepath="$PROJECT_DIR$/.idea/modules/ranchsupply-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ranchsupply-backend.main.iml" filepath="$PROJECT_DIR$/.idea/modules/ranchsupply-backend.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ranchsupply-backend.test.iml" filepath="$PROJECT_DIR$/.idea/modules/ranchsupply-backend.test.iml" />
     </modules>
   </component>
 </project>

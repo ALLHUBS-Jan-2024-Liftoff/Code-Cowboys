@@ -4,6 +4,8 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import { Badge } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
+import Search from "./search";
+import "./Navbar.css";
 import "./NavigationBar.css";
 import { CartContext } from "../../context/CartProvider";
 import { UserContext } from "../../context/UserProvider";
@@ -52,7 +54,9 @@ const NavigationBar = () => {
             aria-controls="responsive-navbar-nav"
             onClick={toggleCollapse}
           />
-
+          <div className="search-container">
+          <Search />
+          </div>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
               <Nav.Link as={NavLink} to="/">

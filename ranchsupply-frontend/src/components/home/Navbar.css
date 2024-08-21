@@ -1,0 +1,37 @@
+.navbar-middle {
+  background-color: var(--lighter);
+  transition: 0.5s ease;
+}
+
+.navbar-middle .menu-links a {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
+  letter-spacing: 0.3;
+  text-transform: uppercase;
+  transition: 0.5s ease;
+}
+.bg-myColor {
+  background-image: linear-gradient(to right, #944a25, #d3a38b);
+}
+.bg-footerColor {
+  background-image: linear-gradient(to right, #042c50, #768df4);
+}
+/* .bg-myColor {
+    background-image: linear-gradient(to bottom right, #7708ae, #6c0850, #b14861);
+  } */
+.websiteLogo {
+  mix-blend-mode: multiply;
+}
+
+
+.search-container input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white; 
+  color: black;
+  margin-top: 10px;
+}
