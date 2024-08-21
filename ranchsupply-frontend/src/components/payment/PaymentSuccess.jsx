@@ -6,11 +6,11 @@ import { NavLink, useNavigate } from "react-router-dom";
 const PaymentSuccess = () => {
   const navigate = useNavigate();
   return (
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-md-10">
-          <div class="message-box _success">
-            <i class="fa fa-check-circle" aria-hidden="true"></i>
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-md-10">
+          <div className="message-box _success">
+            <i className="fa fa-check-circle" aria-hidden="true"></i>
             <h2> Your payment was successful </h2>
             <p>
               {" "}
