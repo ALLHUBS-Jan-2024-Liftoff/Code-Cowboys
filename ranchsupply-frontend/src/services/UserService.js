@@ -13,17 +13,18 @@ export const doLogin = async (data) => {
   try {
     const res = await axios.post(REST_API_BASE_URL + "/login", data);
     console.log("Login response:", res.data);
-    if (res.data.success) {
+   // if (res.data.success) {
       return {
         success: true,
         user: res.data.user,
       };
-    } else {
-      return {
-        success: false,
-        message: res.data.message,
-      };
-    }
+    // } else {
+    //   console.log(res);
+    //   return {
+    //     success: false,
+    //     message: res.data.message,
+    //   };
+  //  }
   } catch (error) {
     console.error("Login failed:", error.response ? error.response.data : error.message);
     return {
