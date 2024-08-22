@@ -27,7 +27,7 @@ import Logout from "./userAuthentication/Logout";
 function App() {
   // const [count, setCount] = useState(0);
 
-  const [authenticated, setAuthenticated] = useState(0);
+  const [authenticated, setAuthenticated] = useState(false);
 
   return (
     <>
