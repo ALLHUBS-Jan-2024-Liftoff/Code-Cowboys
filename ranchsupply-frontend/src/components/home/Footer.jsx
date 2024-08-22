@@ -53,58 +53,6 @@ const Footer = () => {
                 <li>Privacy Policy</li>
               </ul>
             </Col>
-            <Col xs={12} md={3}>
-              <h6 className="text-center">
-                Don't miss out on exclusive deals and updates! Sign up for our
-                newsletter today.
-              </h6>
-              <button className="btn btn-outline-dark w-100 mb-3 mt-3 text-black">
-                Signup
-              </button>
-              <div className="d-flex gap-2 justify-content-center">
-                {/* Social Icons */}
-                <a
-                  href="https://www.facebook.com/"
-                  className="nav-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa-brands fa-square-facebook fs-4"></i>
-                </a>
-                <a
-                  href="https://www.instagram.com/"
-                  className="nav-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa-brands fa-instagram fs-4"></i>
-                </a>
-                <a
-                  href="https://twitter.com/?lang=en"
-                  className="nav-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa-brands fa-twitter fs-4"></i>
-                </a>
-                <a
-                  href="https://www.linkedin.com"
-                  className="nav-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa-brands fa-linkedin fs-4"></i>
-                </a>
-                <a
-                  href="https://www.youtube.com/"
-                  className="nav-link"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <i className="fa-brands fa-youtube fs-4"></i>
-                </a>
-              </div>
-            </Col>
           </Row>
           <Row className="text-center">
             <Col className="pb-2">

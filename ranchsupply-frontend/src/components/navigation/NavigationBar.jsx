@@ -67,10 +67,12 @@ const NavigationBar = () => {
               </Nav.Link>
               <Nav.Link as={NavLink} to="/contact">
                 Contact Us
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="/admin">
-                Admin
-              </Nav.Link>
+                </Nav.Link>
+              {userData.role === 'Admin' && (
+                <Nav.Link as={NavLink} to="/admin">
+                  Admin
+                </Nav.Link>
+              )}
             </Nav>
             <Nav>
               {isLogin ? (
@@ -99,8 +101,12 @@ const NavigationBar = () => {
                 </>
               ) : (
                 <>
-                  <Nav.Link>Login</Nav.Link>
-                  <Nav.Link>Register</Nav.Link>
+                  <Nav.Link as={NavLink} to="/login">
+                    Login
+                  </Nav.Link>
+                  <Nav.Link as={NavLink} to="/register">
+                    Register
+                  </Nav.Link>
                 </>
               )}
             </Nav>

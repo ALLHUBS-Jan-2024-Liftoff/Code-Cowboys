@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Col, Container, Nav, Row } from "react-bootstrap";
-// import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const HomeContent = () => {
   return (
@@ -14,35 +15,39 @@ const HomeContent = () => {
           >
             <h1>Ranch Supply</h1>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Corrupti, facere beatae fuga cupiditate enim nobis dicta, fugit
-              obcaecati ea repudiandae asperiores fugiat, voluptate voluptatum
-              cum quas. Repellat voluptate earum accusantium. Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Ipsum expedita rerum, aut
-              magni fugit magnam fuga tempore eveniet ullam eum, nostrum eos
-              ducimus! Magni, quod repudiandae ratione maiores nobis sit.
+              <b>Ranch Supply</b> is a cutting-edge warehouse management system tailored
+              to enhance the efficiency of ranch operations. Designed to tackle the 
+              common hurdles of inventory management, shipment tracking, and customer 
+              satisfaction, Ranch Supply aims to transform the traditional supply chain.
+              By offering seamless access to essential inventory items, our platform 
+              strives to minimize the inefficiencies and frustrations often faced by 
+              ranchers. 
               <br />
               <b />
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              laboriosam, officiis velit recusandae omnis ratione reiciendis
-              incidunt dolorem quis? Perspiciatis possimus eius inventore dolor
-              vel itaque ad magni porro incidunt!
+              With a focus on reducing downtime and boosting overall 
+              productivity, we are committed to providing a reliable, efficient, 
+              and user-friendly solution that supports the ranching community in their 
+              supply management needs.
             </p>
             {/* If user is logged in dont show login/register button otherwise show buttons  */}
             {false ? (
               ""
             ) : (
               <div>
+              {/* <Link to="/login">
                 <Button variant="primary" className="me-2">
                   Login
                 </Button>
+              </Link>
+              <Link to="/register">
                 <Button variant="outline-primary" className="me-3">
                   Register
                 </Button>
-              </div>
+              </Link> */}
+            </div>
             )}
           </Col>
-          <Col xs={12} md={6}>
+          {/* <Col xs={12} md={6}>
             <img
               // src="src/assets/hero-image.png"
               style={{ width: "100%" }}
@@ -50,7 +55,7 @@ const HomeContent = () => {
               className="d-inline-block align-top"
               alt="RanchSupply Logo"
             />
-          </Col>
+          </Col> */}
         </Row>
       </Container>
     </>

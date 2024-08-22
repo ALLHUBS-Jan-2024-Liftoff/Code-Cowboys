@@ -7,7 +7,7 @@ import { doLogin, getUserById } from "../services/UserService";
 export const UserContext = createContext(null);
 
 const UserProvider = ({ children }) => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(false);
   const [userData, setUserData] = useState({
     id: 52,
     username: "Asha",
@@ -20,7 +20,7 @@ const UserProvider = ({ children }) => {
     zipCode: "63043",
     city: "Maryland Heights",
     state: "MO",
-    role: "Admin",
+    role: "User",
   });
 
   //login
