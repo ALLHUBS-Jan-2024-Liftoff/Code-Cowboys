@@ -1,10 +1,15 @@
 import React, { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { UserContext } from "../context/UserProvider";
 import { doLogin } from "../services/UserService";
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from "../context/UserProvider";
+import { doLogin } from "../services/UserService";
 
 function Login({ setAuthenticated}) {
+  const { setIsLogin, setUserData } = useContext(UserContext);
+function Login({ }) {
   const { setIsLogin, setUserData } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -34,6 +39,25 @@ const handleLogin = async (e) => {
     setMessage(error.message || "Login failed");
   }
 };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await doLogin({ username, password });
+      console.log("Login response:", response);
+      if (response.success) {
+        setIsLogin(true);
+        setUserData(response.user);
+        setAuthenticated(true);
+       // navigate("/");
+        setMessage("Login successful!");
+      } else {
+        setMessage(response.message);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setMessage(error.message || "Login failed");
+    }
+  };
 
   return (
     <div>
