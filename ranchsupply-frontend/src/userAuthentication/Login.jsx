@@ -41,32 +41,38 @@ import React, { useState } from "react";
 import axios from "axios";
 import { UserContext } from "../context/UserProvider";
 import { doLogin } from "../services/UserService";
+import { useNavigate } from 'react-router-dom';
 
-function Login({ }) {
+function Login({ setAuthenticated}) {
   const { setIsLogin, setUserData } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await doLogin({ username, password });
-      console.log("Login response:", response);
-      if (response.success) {
-        setIsLogin(true);
-        setUserData(response.user);
+const handleLogin = async (e) => {
+  e.preventDefault();
+  try {
+    const response = await doLogin({ username, password });
+    console.log("Login response:", response);
+    if (response.success && response.user) {
+      setIsLogin(true);
+      setUserData(response.user);
+      if (setAuthenticated) {
         setAuthenticated(true);
-       // navigate("/");
-        setMessage("Login successful!");
-      } else {
-        setMessage(response.message);
       }
-    } catch (error) {
-      console.error("Login error:", error);
-      setMessage(error.message || "Login failed");
+      setMessage("Login successful!");
+      setTimeout(() => {
+        navigate('/');
+      }, 1500);
+    } else {
+      setMessage(response.message || "Login failed");
     }
-  };
+  } catch (error) {
+    console.error("Login error:", error);
+    setMessage(error.message || "Login failed");
+  }
+};
 
 >>>>>>> 3d1838b (login, register, and logout  forms added)
   return (
