@@ -16,7 +16,7 @@ function Category({ handleChange }) {
       <div className="category-options">
         <label className="sidebar-label-container">
           <input
-            onChange={handleChange}
+            onChange={() => handleChange('')}
             type="radio"
             value=""
             name="category"
@@ -25,13 +25,16 @@ function Category({ handleChange }) {
           All
         </label>
         {categories.map(category => (
-          <Input
-            key={category.category_id}
-            handleChange={handleChange}
-            value={category.category_name.toLowerCase().replace(/\s+/g, '')}
-            title={category.category_name}
-            name="category"
-          />
+          <label key={category.category_id} className="sidebar-label-container">
+            <input
+              onChange={() => handleChange(category.category_name)}
+              type="radio"
+              value={category.category_name}
+              name="category"
+            />
+            <span className="checkmark"></span>
+            {category.category_name}
+          </label>
         ))}
       </div>
     </div>

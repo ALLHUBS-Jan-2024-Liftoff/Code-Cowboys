@@ -5,7 +5,7 @@ const REST_API_BASE_URL = "http://localhost:8080/products";
 // get all products
 
 
-export const getAllProducts = async () => {
+export const listProducts = async () => {
   const response = await axios.get(REST_API_BASE_URL);
   return response.data;
 };

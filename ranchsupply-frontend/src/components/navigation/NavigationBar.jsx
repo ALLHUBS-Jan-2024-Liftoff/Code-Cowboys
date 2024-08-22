@@ -5,7 +5,6 @@ import Nav from "react-bootstrap/Nav";
 import { Badge } from "react-bootstrap";
 import Navbar from "react-bootstrap/Navbar";
 import Search from "./search";
-import "./Navbar.css";
 import "./NavigationBar.css";
 import { CartContext } from "../../context/CartProvider";
 import { UserContext } from "../../context/UserProvider";
@@ -55,7 +54,7 @@ const NavigationBar = () => {
             onClick={toggleCollapse}
           />
           <div className="search-container">
-          <Search />
+         <Search />
           </div>
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
