@@ -30,37 +30,20 @@ const HomeContent = () => {
               and user-friendly solution that supports the ranching community in
               their supply management needs.
             </p>
-            {/* If user is logged in don't show login/register button otherwise show buttons */}
-            {/* Uncomment and modify this section if you want to add login/register buttons
+          
             {false ? (
               ""
             ) : (
               <div>
-                <Link to="/login">
-                  <Button variant="primary" className="me-2">
-                    Login
-                  </Button>
-                </Link>
-                <Link to="/register">
-                  <Button variant="outline-primary" className="me-3">
-                    Register
-                  </Button>
-                </Link>
+                <Button variant="primary" className="me-2">
+                  Login
+                </Button>
+                <Button variant="outline-primary" className="me-3">
+                  Register
+                </Button>
               </div>
             )}
-            */}
           </Col>
-          {/* Uncomment this section if you want to add an image
-          <Col xs={12} md={6}>
-            <img
-              src="src/assets/hero-image.png"
-              style={{ width: "100%" }}
-              fluid="true"
-              className="d-inline-block align-top"
-              alt="RanchSupply Logo"
-            />
-          </Col>
-          */}
         </Row>
       </Container>
     </>
