@@ -14,19 +14,18 @@ const HomeContent = () => {
           >
             <h1>Ranch Supply</h1>
             <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-              Corrupti, facere beatae fuga cupiditate enim nobis dicta, fugit
-              obcaecati ea repudiandae asperiores fugiat, voluptate voluptatum
-              cum quas. Repellat voluptate earum accusantium. Lorem ipsum dolor
-              sit amet consectetur adipisicing elit. Ipsum expedita rerum, aut
-              magni fugit magnam fuga tempore eveniet ullam eum, nostrum eos
-              ducimus! Magni, quod repudiandae ratione maiores nobis sit.
+            Ranch Supply is a cutting-edge warehouse management system tailored to enhance 
+            the efficiency of ranch operations. Designed to tackle the common hurdles 
+            of inventory management, shipment tracking, and customer satisfaction, 
+            Ranch Supply aims to transform the traditional supply chain. By offering 
+            seamless access to essential inventory items, our platform strives to 
+            minimize the inefficiencies and frustrations often faced by ranchers.
               <br />
               <b />
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut
-              laboriosam, officiis velit recusandae omnis ratione reiciendis
-              incidunt dolorem quis? Perspiciatis possimus eius inventore dolor
-              vel itaque ad magni porro incidunt!
+              With a focus on reducing downtime and boosting overall productivity, 
+              we are committed to providing a reliable, efficient, and user-friendly 
+              solution that supports the ranching community in their supply management 
+              needs.
             </p>
             {/* If user is logged in dont show login/register button otherwise show buttons  */}
             {/* {false ? (
@@ -44,7 +43,7 @@ const HomeContent = () => {
           </Col>
           <Col xs={12} md={6}>
             <img
-              // src="src/assets/hero-image.png"
+              src="https://m.media-amazon.com/images/I/814gr-bR9-L._AC_SX679_.jpg"
               style={{ width: "100%" }}
               fluid="true"
               className="d-inline-block align-top"
