@@ -1,0 +1,49 @@
+.table-container {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+  }
+  
+  .admin-table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+  }
+  
+  .admin-table th,
+  .admin-table td {
+    padding: 12px 15px;
+    text-align: left;
+    white-space: nowrap;
+  }
+  
+  .admin-table th {
+    background-color: var(--primary-color);
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    .admin-table th,
+    .admin-table td {
+      padding: 6px;
+      font-size: 12px;
+    }
+  
+    .admin-table th {
+      display: none;
+    }
+  
+    .admin-table td {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+    }
+  
+    .admin-table td:before {
+      content: attr(data-label);
+      float: left;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+  

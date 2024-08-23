@@ -133,7 +133,7 @@ const ContactUs = () => {
                       rel="noreferrer"
                       className="nav-link p-0"
                     >
-                      Asha Singh
+                      Robin Mennel
                       <i
                         className="fa-brands fa-linkedin ms-2"
                         style={{ color: "#0072b1" }}
@@ -144,9 +144,7 @@ const ContactUs = () => {
                     FULL STACK SOFTWARE DEVELOPER
                   </small>
                   <p className="mb-4">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Amet, provident sit explicabo, necessitatibus voluptatum
-                    consequuntur porro error nemo.
+                    Things and stuff about me.
                   </p>
                   <a
                     href="mailto:souravchoudhary1998@gmail.com"

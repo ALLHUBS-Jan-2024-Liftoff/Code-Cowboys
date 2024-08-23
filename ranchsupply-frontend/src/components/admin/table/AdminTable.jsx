@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
-import { Table, Form, Button, Container } from 'react-bootstrap';
+import { Table, Form, Button, Container, Modal } from 'react-bootstrap';
 import * as productService from '../../../services/ProductService';
 import * as categoryService from '../../../services/CategoryService';
+import './AdminTable.css';
 
 const AdminTable = ({ rows, refreshData, type }) => {
   const [editingCell, setEditingCell] = useState({ id: null, field: null });
   const [updatedRow, setUpdatedRow] = useState({});
+  const [showModal, setShowModal] = useState(false);
+  const [activeItem, setActiveItem] = useState(null);
 
   const handleDelete = async (id) => {
     try {
@@ -23,6 +26,7 @@ const AdminTable = ({ rows, refreshData, type }) => {
   const handleCellClick = (row, field) => {
     setEditingCell({ id: row.productId || row.categoryId, field });
     setUpdatedRow({ ...row });
+    setActiveItem(row);
   };
 
   const handleBlur = async () => {
@@ -89,14 +93,19 @@ const AdminTable = ({ rows, refreshData, type }) => {
     return new Date(dateString).toLocaleDateString(undefined, options);
   };
 
+  const handleModalClose = () => {
+    setShowModal(false);
+    setActiveItem(null);
+  };
+
   return (
    <Container fluid>
-     <Table responsive = "sm" striped bordered hover>
+     <Table responsive="sm" striped bordered hover>
       <thead>
         <tr>
           {type === 'products' && (
             <>
-              <th>Prouct Id</th>
+              <th>Product Id</th>
               <th>Category Title</th>
               <th>Brand</th>
               <th>Title</th>
@@ -115,7 +124,7 @@ const AdminTable = ({ rows, refreshData, type }) => {
               <th>Category ID</th>
               <th>Category Title</th>
               <th>Description</th>
-              <th>Category images</th>
+              <th>Category Image</th>
               <th>Created At</th>
               <th>Updated At</th>
             </>
@@ -147,6 +156,7 @@ const AdminTable = ({ rows, refreshData, type }) => {
                 <td>{row.categoryId}</td>
                 <td>{renderCell(row, 'categoryTitle', row.categoryTitle)}</td>
                 <td>{renderCell(row, 'description', row.description)}</td>
+                <td>{renderCell(row, 'categoryImage', row.categoryImage)}</td>
                 <td>{formatDate(row.createdAt)}</td>
                 <td>{formatDate(row.updatedAt)}</td>
               </>
@@ -163,6 +173,8 @@ const AdminTable = ({ rows, refreshData, type }) => {
         ))}
       </tbody>
     </Table>
+
+   
   </Container>
   );
 };

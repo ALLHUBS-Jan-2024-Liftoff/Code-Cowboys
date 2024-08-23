@@ -19,6 +19,8 @@ import Admin from "./components/admin/Admin";
 import NavigationBar from "./components/navigation/NavigationBar";
 import PaymentSuccess from "./components/payment/PaymentSuccess";
 import PaymentFailed from "./components/payment/PaymentFailed";
+import Register from "./components/userAuthentication/Register";
+import Login from "./components/userAuthentication/Login";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -45,20 +47,22 @@ function App() {
               <Route
                 path="/product/:productId"
                 element={<ProductDetailPage />}
-              ></Route>
-              <Route exact path="/cart" element={<Cart />}></Route>
-              <Route path="/checkout-order" element={<OrderCheckout />}></Route>
-              <Route path="/orders" element={<Orders />}></Route>
-              <Route path="/order/:orderId" element={<OrderDetails />}></Route>
+              />
+              <Route exact path="/cart" element={<Cart />} />
+              <Route path="/checkout-order" element={<OrderCheckout />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route path="/order/:orderId" element={<OrderDetails />} />
               <Route exact path="/admin" element={<Admin />} />
+              <Route path="/login" element={<Login />} /> {/* New Login Route */}
               <Route
                 path="/payment/success/:orderId"
                 element={<PaymentSuccess />}
-              ></Route>
+              />
               <Route
                 path="/payment/fail/:orderId"
                 element={<PaymentFailed />}
-              ></Route>
+              />
+              <Route path="/register" element={<Register />} />
             </Routes>
             <Footer />
           </BrowserRouter>

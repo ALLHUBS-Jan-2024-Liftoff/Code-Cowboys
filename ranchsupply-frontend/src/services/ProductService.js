@@ -48,3 +48,15 @@ export const searchProducts = async (searchTerm) => {
   });
   return response.data;
 };
+
+export const getProductsByCategoryId = async (categoryId) => {
+  try {
+    const response = await axios.get(`${API_BASE_URL}/category/${categoryId}`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching products by category:', error);
+    throw error;
+  }
+};
+
+

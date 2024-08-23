@@ -1,8 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createOrder } from "../../services/OrderService";
 import { CartContext } from "../../context/CartProvider";
+import AddressAutofill from "./AddressAutofill";
 
 const OrderCheckout = () => {
   const { cart, setCart } = useContext(CartContext);
@@ -16,7 +17,6 @@ const OrderCheckout = () => {
     shippingPhone: "",
   });
 
-  // get total amount of cart
   const getTotalAmount = () => {
     let totalAmount = 0;
     cart &&
@@ -26,19 +26,25 @@ const OrderCheckout = () => {
     return totalAmount.toFixed(2);
   };
 
-  // handle address input change
-  const handleAddressChange = (event) => {
-    const { name, value } = event.target;
-    setUserAddress({
-      ...userAddress,
+  const handleAddressChange = (name, value) => {
+    setUserAddress((prevState) => ({
+      ...prevState,
       [name]: value,
-    });
+    }));
   };
 
-  // handle address input blur
-  const handleAddressBlur = (event) => {
-    // const inputValue = event.target.value;
-    // setShippingAddress(inputValue);
+  const setAddress = (suggestion) => {
+    const address = suggestion.place_name;
+    const context = suggestion.context;
+
+    const city = context.find((c) => c.id.startsWith("place"))?.text || "";
+    const state = context.find((c) => c.id.startsWith("region"))?.text || "";
+    const zipCode = context.find((c) => c.id.startsWith("postcode"))?.text || "";
+
+    handleAddressChange("shippingAddress", address);
+    handleAddressChange("city", city);
+    handleAddressChange("state", state);
+    handleAddressChange("zipCode", zipCode);
   };
 
   const placeOrder = async (data) => {
@@ -50,11 +56,11 @@ const OrderCheckout = () => {
         console.log("Payment Url: " + result.paymentUrl);
         window.location.href = result.paymentUrl;
       }
-      // navigate("/orders");
     } catch (error) {
       console.error(error);
     }
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -73,6 +79,7 @@ const OrderCheckout = () => {
 
     placeOrder(data);
   };
+
   return (
     <Container className="mt-3">
       <Row>
@@ -89,56 +96,50 @@ const OrderCheckout = () => {
             </Col>
           </Row>
           {cart &&
-            cart?.items.map((item, index) => {
-              return (
-                <Row key={index} className="mb-3">
-                  {/* item image */}
-                  <Col
-                    xs={4}
-                    sm={3}
-                    md={2}
-                    lg={3}
-                    xl={2}
-                    className="d-flex align-items-center justify-content-center"
-                  >
-                    <img
-                      src={item.product.productImage}
-                      alt={item.product.title}
-                      style={{
-                        objectFit: "cover",
-                        width: "120px",
-                        height: "100px",
-                      }}
-                    />
-                  </Col>
-                  {/* Product Details */}
-                  <Col xs={8} sm={6} lg={9}>
-                    <Row>
-                      <Col>
-                        <h6
-                          className="product-title"
-                          onClick={() =>
-                            navigate("/product/" + item.product.productId)
-                          }
-                        >
-                          {item.product.title}
-                        </h6>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md={6}>
-                        <small>Quantity: {item.quantity} </small>
-                      </Col>
-                      <Col md={6}>
-                        <small>
-                          Total Price: $ {item.totalPrice.toFixed(2)}
-                        </small>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              );
-            })}
+            cart?.items.map((item, index) => (
+              <Row key={index} className="mb-3">
+                <Col
+                  xs={4}
+                  sm={3}
+                  md={2}
+                  lg={3}
+                  xl={2}
+                  className="d-flex align-items-center justify-content-center"
+                >
+                  <img
+                    src={item.product.productImage}
+                    alt={item.product.title}
+                    style={{
+                      objectFit: "cover",
+                      width: "120px",
+                      height: "100px",
+                    }}
+                  />
+                </Col>
+                <Col xs={8} sm={6} lg={9}>
+                  <Row>
+                    <Col>
+                      <h6
+                        className="product-title"
+                        onClick={() =>
+                          navigate("/product/" + item.product.productId)
+                        }
+                      >
+                        {item.product.title}
+                      </h6>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col md={6}>
+                      <small>Quantity: {item.quantity} </small>
+                    </Col>
+                    <Col md={6}>
+                      <small>Total Price: $ {item.totalPrice.toFixed(2)}</small>
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+            ))}
           <Row className="mb-3">
             <Col>
               <h4>Total Order Amount: $ {getTotalAmount()}</h4>
@@ -148,23 +149,16 @@ const OrderCheckout = () => {
         <Col lg={6}>
           <Form onSubmit={handleSubmit}>
             <Row>
-              <Form.Group
-                as={Col}
-                md={6}
-                controlId="orderName"
-                className="mb-3"
-              >
+              <Form.Group as={Col} md={6} controlId="orderName" className="mb-3">
                 <Form.Label>Order Name</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Order Name"
-                  onChange={handleAddressChange}
-                  name="orderName"
+                  onChange={(e) =>
+                    handleAddressChange("orderName", e.target.value)
+                  }
                   value={userAddress.orderName}
                 />
-                <Form.Control.Feedback type="invalid">
-                  {/* {errors.orderName} */}
-                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group
                 as={Col}
@@ -176,46 +170,30 @@ const OrderCheckout = () => {
                 <Form.Control
                   type="text"
                   placeholder="Shipping Phone"
-                  onChange={handleAddressChange}
-                  name="shippingPhone"
+                  onChange={(e) =>
+                    handleAddressChange("shippingPhone", e.target.value)
+                  }
                   value={userAddress.shippingPhone}
                 />
-                <Form.Control.Feedback type="invalid">
-                  {/* {errors.shippingPhone} */}
-                </Form.Control.Feedback>
               </Form.Group>
             </Row>
 
             <Row>
               <Form.Group as={Col} controlId="shippingAddress" className="mb-3">
                 <Form.Label>Shipping Address</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Shipping Address"
-                  autoComplete="address-line-1"
-                  name="shippingAddress"
-                  value={userAddress.shippingAddress}
-                  onChange={handleAddressChange}
-                />
-                <Form.Control.Feedback type="invalid">
-                  {/* {errors.shippingAddress} */}
-                </Form.Control.Feedback>
+                <AddressAutofill setAddress={setAddress} />
               </Form.Group>
             </Row>
             <Row>
-              <Form.Group as={Col} controlId="city" className="mb-3" md={4}>
+              <Form.Group as={Col} controlId="city" className="mb-3">
                 <Form.Label>City</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="City"
                   autoComplete="address-level2"
-                  onChange={handleAddressChange}
-                  name="city"
+                  onChange={(e) => handleAddressChange("city", e.target.value)}
                   value={userAddress.city}
                 />
-                <Form.Control.Feedback type="invalid">
-                  {/* {errors.city} */}
-                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} controlId="state" className="mb-3">
                 <Form.Label>State</Form.Label>
@@ -223,13 +201,9 @@ const OrderCheckout = () => {
                   type="text"
                   placeholder="State"
                   autoComplete="address-level1"
-                  onChange={handleAddressChange}
-                  name="state"
+                  onChange={(e) => handleAddressChange("state", e.target.value)}
                   value={userAddress.state}
                 />
-                <Form.Control.Feedback type="invalid">
-                  {/* {errors.province} */}
-                </Form.Control.Feedback>
               </Form.Group>
               <Form.Group as={Col} controlId="zipCode" className="mb-3">
                 <Form.Label>Zip Code</Form.Label>
@@ -237,13 +211,11 @@ const OrderCheckout = () => {
                   type="text"
                   placeholder="Zip Code"
                   autoComplete="postal-code"
-                  onChange={handleAddressChange}
-                  name="zipCode"
+                  onChange={(e) =>
+                    handleAddressChange("zipCode", e.target.value)
+                  }
                   value={userAddress.zipCode}
                 />
-                <Form.Control.Feedback type="invalid">
-                  {/* {errors.postalCode} */}
-                </Form.Control.Feedback>
               </Form.Group>
             </Row>
             <Button variant="primary" type="submit" className="me-2 mb-3">
