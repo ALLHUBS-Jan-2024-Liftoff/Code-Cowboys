@@ -93,4 +93,16 @@ public class ProductService {
         return products.stream().map(product -> modelMapper.map(product, ProductDto.class))
                 .collect(Collectors.toList());
     }
+
+    public List<ProductDto> getProductsByCategoryId(Long categoryId) {
+        List<Product> products = productRepository.findByCategory_CategoryId(categoryId);
+        if (products.isEmpty()) {
+            throw new ResourceNotFoundException("No products found for category with ID: " + categoryId);
+        }
+        return products.stream()
+                .map(product -> modelMapper.map(product, ProductDto.class))
+                .collect(Collectors.toList());
+    }
+
+
 }

@@ -37,7 +37,7 @@ public class Category {
     public Category() {
     }
 
-    public Category(Long categoryId, String categoryTitle, String description, Date createdAt, Date updatedAt, List<Product> products) {
+    public Category(Long categoryId, String categoryTitle, String description,String categoryImage, Date createdAt, Date updatedAt, List<Product> products) {
         this.categoryId = categoryId;
         this.categoryTitle = categoryTitle;
         this.description = description;

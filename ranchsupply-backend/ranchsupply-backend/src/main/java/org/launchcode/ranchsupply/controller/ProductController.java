@@ -82,4 +82,9 @@ public class ProductController {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+    @GetMapping("/category/{categoryId}")
+    public ResponseEntity<List<ProductDto>> getProductsByCategoryId(@PathVariable Long categoryId) {
+        List<ProductDto> products = productservice.getProductsByCategoryId(categoryId);
+        return ResponseEntity.ok(products);
+    }
 }
