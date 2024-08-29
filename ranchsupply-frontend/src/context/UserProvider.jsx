@@ -20,7 +20,7 @@ const UserProvider = ({ children }) => {
     zipCode: "63043",
     city: "Maryland Heights",
     state: "MO",
-    role: "User",
+    role: "Admin",
   });
 
   //login

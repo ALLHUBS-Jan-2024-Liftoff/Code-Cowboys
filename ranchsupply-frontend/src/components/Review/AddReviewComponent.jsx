@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+//import React, { useState } from 'react';
 import { Button, Form, Modal } from 'react-bootstrap';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
@@ -9,6 +9,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 import { UserContext } from '../../context/UserProvider';
+import React, { useState, useContext } from 'react';
 
 const AddReviewComponent = ({ productId, show, handleClose }) => {
   const { userData } = useContext(UserContext);

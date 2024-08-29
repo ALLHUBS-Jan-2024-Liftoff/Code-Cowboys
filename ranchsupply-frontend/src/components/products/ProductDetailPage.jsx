@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { Badge, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { getProductById } from "../../services/ProductService";
 import { CartContext } from "../../context/CartProvider";
-import {AddReviewComponent} from "../Review/AddReviewComponent";
+import AddReviewComponent from "../Review/AddReviewComponent";
 import { Rating } from "react-ratings-declarative";
 
 const ProductDetailPage = () => {
@@ -174,20 +174,25 @@ const ProductDetailPage = () => {
           </Row>
           </Container>
       )}
-      <Container className="mt-3">
-        <h3>Product Reviews</h3>
-        <Rating
-          rating={product.rating || 0} 
-          widgetDimensions="20px"
-          widgetSpacings="2px"
-        >
-          <Rating.Widget widgetRatedColor="blue" />
-          <Rating.Widget widgetRatedColor="blue" />
-          <Rating.Widget widgetRatedColor="blue" />
-          <Rating.Widget widgetRatedColor="blue" />
-          <Rating.Widget widgetRatedColor="blue" />
-        </Rating>
-      </Container>
+  <Container className="mt-3">
+  <h3>Product Reviews</h3>
+  <div className="d-flex align-items-center">
+    <Ratings
+      rating={product.rating || 0}
+      widgetDimensions="20px"
+      widgetSpacings="2px"
+      widgetRatedColors="blue"
+    >
+      <Ratings.Widget />
+      <Ratings.Widget />
+      <Ratings.Widget />
+      <Ratings.Widget />
+      <Ratings.Widget />
+    </Ratings>
+    <span className="ms-2">{product.rating ? product.rating.toFixed(1) : 'No ratings yet'}</span>
+  </div>
+</Container>
+
 
       <AddReviewComponent
         productId={productId}
