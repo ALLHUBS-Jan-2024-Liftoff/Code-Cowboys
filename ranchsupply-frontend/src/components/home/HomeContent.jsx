@@ -2,6 +2,7 @@ import React from "react";
 import { Button, Col, Container, Nav, Row } from "react-bootstrap";
 //import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import CarouselComponent from "../Carousel/CarouselComponent";
 
 const HomeContent = () => {
   return (
@@ -14,38 +15,30 @@ const HomeContent = () => {
             className="d-flex flex-column justify-content-center"
           >
             <h1>Ranch Supply</h1>
-            <p>
-              <b>Ranch Supply</b> is a cutting-edge warehouse management system
-              tailored to enhance the efficiency of ranch operations. Designed
-              to tackle the common hurdles of inventory management, shipment
-              tracking, and customer satisfaction, Ranch Supply aims to
-              transform the traditional supply chain. By offering seamless
-              access to essential inventory items, our platform strives to
-              minimize the inefficiencies and frustrations often faced by
-              ranchers.
-              <br />
-              <b />
-              With a focus on reducing downtime and boosting overall
-              productivity, we are committed to providing a reliable, efficient,
-              and user-friendly solution that supports the ranching community in
-              their supply management needs.
-            </p>
-          
-            {false ? (
-              ""
-            ) : (
-              <div>
-                <Button variant="primary" className="me-2">
-                  Login
-                </Button>
-                <Button variant="outline-primary" className="me-3">
-                  Register
-                </Button>
-              </div>
-            )}
-          </Col>
-        </Row>
-      </Container>
+            <p>  
+            <b>Ranch Supply</b> is a cutting-edge warehouse management system
+            tailored to enhance the efficiency of ranch operations. Designed
+            to tackle the common hurdles of inventory management, shipment
+            tracking, and customer satisfaction, Ranch Supply aims to
+            transform the traditional supply chain. By offering seamless
+            access to essential inventory items, our platform strives to
+            minimize the inefficiencies and frustrations often faced by
+            ranchers.
+          </p>
+          <p>
+            With a focus on reducing downtime and boosting overall
+            productivity, we are committed to providing a reliable, efficient,
+            and user-friendly solution that supports the ranching community in
+            their supply management needs.
+          </p>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12}>
+          <CarouselComponent />
+        </Col>
+      </Row>
+    </Container>
     </>
   );
 };
