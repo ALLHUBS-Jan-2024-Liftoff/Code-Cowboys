@@ -23,6 +23,7 @@ import Logout from "./userAuthentication/Logout";
 import PaymentSuccess from "./components/payment/PaymentSuccess";
 import PaymentFailed from "./components/payment/PaymentFailed";
 //import CarouselComponent from "./components/Carousel/CarouselComponent";
+//import CustomRating from "./components/CustomRating";
 
 
 

@@ -5,6 +5,8 @@ import { toast } from "react-toastify";
 import { Badge, Button, Col, Container, Form, Row } from "react-bootstrap";
 import { getProductById } from "../../services/ProductService";
 import { CartContext } from "../../context/CartProvider";
+import {AddReviewComponent} from "../Review/AddReviewComponent";
+import { Rating } from "react-ratings-declarative";
 
 const ProductDetailPage = () => {
   const navigate = useNavigate();
@@ -12,6 +14,7 @@ const ProductDetailPage = () => {
   const { productId } = useParams();
   const [quantity, setQuantity] = useState(1);
   const { addItem } = useContext(CartContext);
+  const [showReviewModal, setShowReviewModal] = useState(false);
 
   const fetchProductById = async (productId) => {
     try {
@@ -169,8 +172,28 @@ const ProductDetailPage = () => {
               </div>
             </Col>
           </Row>
-        </Container>
+          </Container>
       )}
+      <Container className="mt-3">
+        <h3>Product Reviews</h3>
+        <Rating
+          rating={product.rating || 0} 
+          widgetDimensions="20px"
+          widgetSpacings="2px"
+        >
+          <Rating.Widget widgetRatedColor="blue" />
+          <Rating.Widget widgetRatedColor="blue" />
+          <Rating.Widget widgetRatedColor="blue" />
+          <Rating.Widget widgetRatedColor="blue" />
+          <Rating.Widget widgetRatedColor="blue" />
+        </Rating>
+      </Container>
+
+      <AddReviewComponent
+        productId={productId}
+        show={showReviewModal}
+        handleClose={() => setShowReviewModal(false)}
+      />
     </>
   );
 };
